@@ -1,0 +1,5 @@
+{
+  "routes": [
+    { "src": "/", "dest": "/lp_semana_mini_contratos_v2.html" }
+  ]
+}
