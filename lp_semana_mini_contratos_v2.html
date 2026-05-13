@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Semana dos Mini Contratos — Inscreva-se Grátis</title>
+<meta name="description" content="5 aulas ao vivo com os melhores analistas do mercado brasileiro. Do zero absoluto até estratégias operacionais usadas por traders profissionais. Evento gratuito." />
+
+<!-- Google Fonts: Montserrat — TAV brand font (non-blocking) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'" />
+<noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</noscript>
+<!-- Preload logo TAV — usada 3x na página -->
+<link rel="preload" as="image"
+      href="https://tradeaovivo.com.br/wp-content/uploads/2026/04/group_9.webp"
+      fetchpriority="high" />
+
+<style>
+/* ═══════════════════════════════════════════════════════════
+   DESIGN SYSTEM — TRADE AO VIVO
+   Cores, tipografia e componentes extraídos do site oficial
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  /* Backgrounds */
+  --bg:     #09090E;
+  --bg-2:   #0C0D14;
+  --bg-3:   #101118;
+  --card:   #12131C;
+  --card-2: #161720;
+
+  /* Brand */
+  --teal:         #00DFC8;
+  --teal-dim:     rgba(0, 223, 200, 0.09);
+  --teal-border:  rgba(0, 223, 200, 0.18);
+  --teal-glow:    rgba(0, 223, 200, 0.30);
+  --blue:         #0088FF;
+  --grad:         linear-gradient(135deg, #0088FF 0%, #00DFC8 100%);
+  --grad-90:      linear-gradient(90deg,  #0088FF 0%, #00DFC8 100%);
+  --grad-text:    linear-gradient(90deg,  #0099FF 0%, #00DFC8 100%);
+
+  /* State colors */
+  --red:      #FF3A5C;
+  --red-dim:  rgba(255, 58, 92, 0.09);
+
+  /* Typography */
+  --white:    #FFFFFF;
+  --text-b:   #FFFFFF;
+  --text:     #C8D4E4;
+  --text-dim: #8A9BB0;
+
+  /* Borders */
+  --border:      rgba(255, 255, 255, 0.055);
+  --border-card: rgba(255, 255, 255, 0.08);
+
+  /* Font */
+  --font: 'Montserrat', 'Segoe UI', -apple-system, sans-serif;
+  --mono: 'Courier New', 'Consolas', monospace;
+
+  /* Spacing scale (8dp) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+  --space-8: 88px;
+
+  /* Radius */
+  --r-sm: 6px;
+  --r:    10px;
+  --r-lg: 14px;
+  --r-xl: 20px;
+
+  /* Z-index scale */
+  --z-base:   0;
+  --z-card:   10;
+  --z-sticky: 40;
+  --z-modal:  100;
+  --z-nav:    200;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESET — mobile-first
+   ═══════════════════════════════════════════════════════════ */
+*, *::before, *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg); color: var(--text-b);
+  font-family: var(--font); font-size: 16px; /* min 16px — avoids iOS zoom */
+  line-height: 1.6; overflow-x: hidden;
+}
+img { max-width: 100%; display: block; height: auto; }
+/* Prevent horizontal overflow on mobile */
+* { min-width: 0; }
+a { color: var(--teal); text-decoration: none; }
+button, input { font-family: var(--font); }
+
+/* Accessible skip link */
+.skip-link {
+  position: absolute; top: -100px; left: 16px; z-index: 9999;
+  background: var(--teal); color: var(--bg);
+  padding: 8px 16px; border-radius: var(--r-sm);
+  font-weight: 700; font-size: 14px;
+  transition: top .2s;
+}
+.skip-link:focus { top: 16px; }
+
+/* ═══════════════════════════════════════════════════════════
+   UTILITIES
+   ═══════════════════════════════════════════════════════════ */
+.container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+.container-sm { max-width: 720px; margin: 0 auto; padding: 0 40px; }
+
+.grad-text {
+  background: var(--grad-text);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; color: transparent;
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); border: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ANIMATIONS — respect prefers-reduced-motion
+   ═══════════════════════════════════════════════════════════ */
+@keyframes strip-scroll { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+@keyframes glow-cta { 0%,100%{box-shadow:0 0 20px rgba(0,223,200,.28);} 50%{box-shadow:0 0 42px rgba(0,223,200,.55);} }
+@keyframes scan-line  { from{transform:translateY(-100vh);} to{transform:translateY(100vh);} }
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0; transform: translateY(22px);
+  transition: opacity .6s ease, transform .6s ease;
+  /* UX Pro Max: use transform/opacity only — no width/height animation */
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: .08s; }
+.reveal.d2 { transition-delay: .16s; }
+.reveal.d3 { transition-delay: .24s; }
+.reveal.d4 { transition-delay: .32s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.d1, .reveal.d2, .reveal.d3, .reveal.d4 {
+    opacity: 1; transform: none; transition: none;
+  }
+  .btn-cta { animation: none; }
+  .faixa-track { animation-play-state: paused; }
+  .hero-scan::after { animation: none; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════════════════════ */
+.hero {
+  position: relative; min-height: 100svh;
+  background: var(--bg);
+  display: flex; flex-direction: column;
+  text-align: left;
+  overflow: hidden;
+}
+/* Prevent ALL text nodes from overflowing their containers */
+.hero h1, .hero-sub, .hero-proof, .section-title, .day-title, .day-desc,
+.analyst-name, .analyst-bio, .analyst-specialty, .analyst-theme,
+.bonus-item-title, .bonus-item-desc, .footer-cta h2, .hero-badge {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+/* Wrapper interno cresce para preencher o espaço e centraliza o conteúdo */
+.hero-body {
+  flex: 1;
+  display: flex; align-items: center; justify-content: center;
+  padding: 40px 40px var(--space-7);
+  position: relative; z-index: 2; width: 100%;
+}
+
+/* Grid texture */
+.hero-grid {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+  background-size: 68px 68px;
+}
+
+/* Top gradient line — TAV brand mark */
+.hero-top-line {
+  position: absolute; top: 0; left: 0; right: 0; height: 2px; z-index: 1;
+  background: var(--grad-90);
+}
+
+/* Ambient blobs */
+.hero-blob-blue {
+  position: absolute; bottom: -80px; right: -80px; z-index: 0;
+  width: 500px; height: 500px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(0,136,255,.07) 0%, transparent 65%);
+}
+.hero-blob-teal {
+  position: absolute; top: 15%; left: -60px; z-index: 0;
+  width: 340px; height: 340px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(0,223,200,.04) 0%, transparent 65%);
+}
+
+/* Scan line */
+.hero-scan {
+  position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;
+}
+.hero-scan::after {
+  content: ''; position: absolute; left: 0; right: 0; height: 180px;
+  background: linear-gradient(transparent, rgba(0,223,200,.02), transparent);
+  animation: scan-line 10s linear infinite;
+}
+
+/* Candlestick canvas */
+.hero-chart {
+  position: absolute; right: 0; bottom: 0; z-index: 0;
+  width: 55%; height: 80%;
+  opacity: .045; pointer-events: none;
+  transition: transform .5s ease;
+}
+
+/* Vignette — left fade for readability */
+.hero-vignette {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(ellipse at 50% 45%, transparent 30%, rgba(9,9,14,.65) 100%);
+}
+
+.hero-content {
+  max-width: 1160px; width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 460px;
+  gap: 72px;
+  align-items: center;
+}
+.hero-left { display: flex; flex-direction: column; }
+.hero-right { display: flex; flex-direction: column; }
+
+/* Event badge */
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1px solid var(--teal-border); background: var(--teal-dim);
+  border-radius: 4px; padding: 6px 16px; margin-bottom: var(--space-4);
+  font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+  color: var(--teal); text-transform: uppercase;
+  align-self: flex-start;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 5.4vw, 74px);
+  font-weight: 900; line-height: 1.08;
+  color: var(--white); letter-spacing: -.6px;
+  margin-bottom: var(--space-3);
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
+}
+
+.hero-sub {
+  font-size: clamp(15px, 1.6vw, 18px); font-weight: 500;
+  color: var(--text); max-width: 540px; width: 100%; margin: 0 0 var(--space-3);
+  line-height: 1.8;
+}
+
+.hero-proof {
+  font-size: 13px; font-weight: 600; color: var(--text-dim);
+  margin-bottom: var(--space-5); letter-spacing: .3px;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+}
+.hero-proof strong { color: var(--text); font-weight: 700; }
+
+/* Top accent line — TAV panel signature (utility) */
+.has-top-accent { position: relative; overflow: hidden; }
+.has-top-accent::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--grad-90);
+}
+
+/* CTA Box — form panel */
+.cta-box {
+  background: var(--card); border: 1px solid var(--border-card);
+  border-radius: var(--r-lg); padding: var(--space-5) var(--space-5);
+  width: 100%; margin: 0;
+  text-align: left;
+}
+.cta-box-label {
+  font-size: 13px; font-weight: 600; color: var(--text);
+  text-align: center; margin-bottom: var(--space-3);
+}
+.cta-box-label strong { color: var(--teal); }
+
+/* Form inputs — visible labels (UX Pro Max §8) */
+.form-field { margin-bottom: 11px; }
+.form-field label {
+  display: block; font-size: 10px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--text); margin-bottom: 5px;
+}
+.input-field {
+  width: 100%; background: var(--bg-2);
+  border: 1px solid var(--border); border-radius: var(--r-sm);
+  padding: 13px 15px; font-size: 15px; font-weight: 500;
+  color: var(--white); outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+  /* Min 44px touch target height — UX Pro Max §2 */
+  min-height: 48px;
+}
+.input-field::placeholder { color: var(--text-dim); }
+.input-field:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(0, 223, 200, .08);
+}
+.btn-cta {
+  display: block; width: 100%;
+  background: var(--grad-90); color: #FFFFFF;
+  font-family: var(--font); font-size: 14px; font-weight: 900;
+  letter-spacing: .5px; text-transform: uppercase;
+  border: none; border-radius: 8px;
+  padding: 18px 16px; cursor: pointer;
+  margin-top: var(--space-3); margin-bottom: var(--space-2);
+  min-height: 58px;
+  overflow-wrap: break-word; word-break: break-word;
+  transition: opacity .2s ease, transform .15s ease, box-shadow .25s ease;
+}
+.btn-cta:hover {
+  opacity: .9; transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(0, 136, 255, .40);
+}
+.btn-cta:active { transform: translateY(0); opacity: 1; }
+.btn-cta:focus-visible {
+  outline: 2px solid var(--teal); outline-offset: 3px;
+}
+.input-field:focus-visible { outline: none; }
+
+.terms {
+  font-size: 11px; font-weight: 500; color: var(--text-dim);
+  text-align: center; line-height: 1.6;
+}
+
+/* Separator between proof line and bullets */
+.hero-separator {
+  width: 32px; height: 1px; background: var(--border-card);
+  margin: var(--space-2) 0 var(--space-4);
+}
+
+/* Hero bullets */
+.hero-bullets {
+  display: flex; gap: var(--space-4); justify-content: flex-start;
+  flex-wrap: wrap; margin-top: var(--space-4);
+}
+.hero-bullet {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 600; color: var(--text-b);
+}
+.hero-bullet .chk {
+  width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+  background: var(--teal-dim); border: 1px solid var(--teal-border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: var(--teal); font-weight: 900;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FAIXA — Scrolling strip ancorada no rodapé do hero
+   ═══════════════════════════════════════════════════════════ */
+.faixa {
+  background: var(--bg-2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 13px 0; overflow: hidden;
+}
+.hero > .faixa {
+  position: relative; z-index: 3;
+  border-top: 1px solid var(--border); border-bottom: none;
+}
+.faixa-track {
+  display: flex; white-space: nowrap; width: max-content;
+  animation: strip-scroll 38s linear infinite;
+}
+.faixa-item {
+  display: flex; align-items: center; gap: 13px;
+  padding: 0 36px;
+  font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+  color: var(--white); text-transform: uppercase;
+}
+/* Diamond icon — TAV brand glyph */
+.faixa-icon { color: var(--teal); font-size: 12px; flex-shrink: 0; }
+
+/* ═══════════════════════════════════════════════════════════
+   SECTIONS — shared
+   ═══════════════════════════════════════════════════════════ */
+.section { padding: var(--space-8) 0; }
+.section-alt { background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+
+.section-title {
+  font-size: clamp(26px, 4.2vw, 46px); font-weight: 900;
+  line-height: 1.2; color: var(--white);
+  letter-spacing: -.4px; margin-bottom: var(--space-6);
+  overflow-wrap: break-word; word-break: break-word;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CRONOGRAMA — CARROSSEL
+   ═══════════════════════════════════════════════════════════ */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: .35; transform: scale(.7); }
+}
+
+/* Wrapper — espaço lateral para os botões de navegação */
+.schedule-carousel-wrapper {
+  position: relative;
+  padding: 0 56px;
+}
+
+/* Carousel: allow native horizontal swipe without fighting scroll */
+.schedule-carousel {
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Trilho horizontal com scroll-snap */
+.schedule-carousel {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 6px 2px 20px;
+  scroll-behavior: smooth;
+}
+.schedule-carousel::-webkit-scrollbar { display: none; }
+
+/* Cards — tamanho fixo, todos iguais */
+.schedule-card {
+  flex: 0 0 270px;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card hover — utility compartilhada por schedule e analyst cards */
+.card-hoverable {
+  background: var(--card); border: 1px solid var(--border-card);
+  border-radius: var(--r-lg); overflow: hidden;
+  position: relative;
+  transition: border-color .3s ease, transform .3s ease, box-shadow .3s ease;
+}
+.card-hoverable:hover {
+  border-color: var(--teal-border);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 48px rgba(0,223,200,.1);
+}
+.card-hoverable:focus-within { border-color: var(--teal-border); }
+
+/* ── Corner bracket decoration ── */
+.card-brackets {
+  position: absolute; inset: 0; pointer-events: none; z-index: 3;
+  opacity: 0; transition: opacity .3s ease;
+}
+.card-brackets::before,
+.card-brackets::after {
+  content: ''; position: absolute;
+  width: 16px; height: 16px;
+  border-color: rgba(0,223,200,.65); border-style: solid;
+  transition: transform .3s ease;
+}
+.card-brackets::before {
+  top: 10px; left: 10px; border-width: 2px 0 0 2px;
+  transform: translate(-4px, -4px);
+}
+.card-brackets::after {
+  bottom: 10px; right: 10px; border-width: 0 2px 2px 0;
+  transform: translate(4px, 4px);
+}
+.card-hoverable:hover .card-brackets { opacity: 1; }
+.card-hoverable:hover .card-brackets::before { transform: translate(0, 0); }
+.card-hoverable:hover .card-brackets::after  { transform: translate(0, 0); }
+
+/* Bottom gradient sweep on hover */
+.schedule-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 2px; background: var(--grad-90);
+  opacity: 0; transition: opacity .3s ease;
+}
+.schedule-card:hover::after { opacity: .75; }
+
+/* ── Card header: day name left + live tag right ── */
+.card-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 11px var(--space-4); flex-shrink: 0;
+  background: rgba(0,223,200,.04);
+  border-bottom: 1px solid var(--border);
+}
+.card-day-name {
+  font-size: 13px; font-weight: 800;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--teal);
+}
+
+/* ── Big decorative day number ── */
+.card-num-bg {
+  position: absolute; bottom: -14px; right: -2px;
+  font-size: 92px; font-weight: 900; line-height: 1;
+  color: rgba(0,223,200,.05); letter-spacing: -6px;
+  pointer-events: none; user-select: none;
+  transition: color .35s ease;
+}
+.card-hoverable:hover .card-num-bg { color: rgba(0,223,200,.11); }
+
+.schedule-body {
+  padding: var(--space-4); flex: 1;
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+}
+.day-num {
+  font-size: 12px; font-weight: 700; color: var(--text-b);
+  text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px;
+  opacity: .65;
+}
+.day-title {
+  font-size: 22px; font-weight: 800; color: var(--white);
+  margin-bottom: 12px; line-height: 1.25;
+  overflow-wrap: break-word; word-break: break-word;
+}
+.day-desc {
+  font-size: 14px; font-weight: 500; color: var(--text-b); line-height: 1.7; flex: 1;
+  overflow-wrap: break-word;
+}
+
+/* ── Live tag — no header, sem margin-bottom ── */
+.day-live-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 9px; font-weight: 800; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--red);
+  background: rgba(255,58,92,.06);
+  border: 1px solid rgba(255,58,92,.28);
+  border-radius: 4px; padding: 4px 10px;
+}
+.day-live-tag::before {
+  content: ''; width: 5px; height: 5px; background: var(--red);
+  border-radius: 50%; flex-shrink: 0;
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
+
+/* Botões de navegação */
+.carousel-btn {
+  position: absolute; top: 50%; transform: translateY(calc(-50% - 10px));
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--card-2); border: 1px solid var(--border-card);
+  color: var(--white); font-size: 20px; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 10;
+  transition: background .2s, border-color .2s, color .2s, opacity .2s;
+}
+.carousel-btn:hover {
+  background: var(--teal-dim); border-color: var(--teal-border); color: var(--teal);
+}
+.carousel-btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+.carousel-btn--prev { left: 0; }
+.carousel-btn--next { right: 0; }
+.carousel-btn[disabled] { opacity: .25; cursor: default; pointer-events: none; }
+
+/* Swipe hint — seta indicativa mobile */
+@keyframes hint-bounce {
+  0%, 100% { transform: translateY(-50%) translateX(0);   opacity: .8; }
+  50%       { transform: translateY(-50%) translateX(7px); opacity: 1; }
+}
+.carousel-hint {
+  display: none;
+  position: absolute; right: 6px; top: 50%;
+  transform: translateY(-50%);
+  z-index: 20; pointer-events: none;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(0,223,200,.12);
+  border: 1px solid var(--teal-border);
+  align-items: center; justify-content: center;
+  font-size: 22px; color: var(--teal); line-height: 1;
+  animation: hint-bounce 1.3s ease-in-out infinite;
+  transition: opacity .4s ease;
+}
+@media (max-width: 768px) {
+  .carousel-hint { display: flex; }
+}
+.carousel-hint.hidden { opacity: 0; pointer-events: none; animation: none; }
+
+/* Indicadores de progresso */
+.carousel-dots {
+  display: flex; justify-content: center; align-items: center; gap: 8px;
+  margin-top: 6px;
+}
+.carousel-dot {
+  width: 6px; height: 6px; border-radius: 3px;
+  background: var(--border-card);
+  transition: background .25s, width .25s, transform .25s;
+  cursor: pointer;
+}
+.carousel-dot.active { background: var(--teal); width: 20px; }
+
+/* Bonus strip */
+.bonus-strip {
+  margin-top: var(--space-5);
+  background: var(--card); border: 1px solid var(--teal-border);
+  border-radius: var(--r-lg); overflow: hidden;
+}
+.bonus-header {
+  padding: 12px var(--space-5);
+  border-bottom: 1px solid var(--border);
+  background: rgba(0,223,200,.04);
+  font-size: 11px; font-weight: 800;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--teal);
+}
+.bonus-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.bonus-item {
+  padding: var(--space-4) var(--space-5);
+  border-right: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 6px;
+}
+.bonus-item:last-child { border-right: none; }
+.bonus-item-num {
+  font-size: 12px; font-weight: 800; letter-spacing: 2px;
+  color: var(--teal);
+  margin-bottom: 2px;
+}
+.bonus-item-line {
+  width: 28px; height: 2px;
+  background: var(--grad-90); border-radius: 1px;
+  margin-bottom: 8px;
+}
+.bonus-item-title {
+  font-size: 22px; font-weight: 800; color: var(--white);
+  line-height: 1.25;
+}
+.bonus-item-desc {
+  font-size: 14px; font-weight: 500; color: var(--text-b);
+  line-height: 1.65;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ANALISTAS
+   ═══════════════════════════════════════════════════════════ */
+.analysts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: var(--space-4);
+}
+
+.analyst-card { /* herda de .card-hoverable */ }
+
+/* Analyst photo area */
+.analyst-photo {
+  height: 190px; background: var(--card-2);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; border-bottom: 1px solid var(--border); overflow: hidden;
+}
+.analyst-photo::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 110%, rgba(0,223,200,.08), transparent 60%);
+}
+
+/* SVG placeholder person — no emoji as structural icon (UX §4) */
+.analyst-avatar {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: var(--bg-3); border: 2px solid var(--border-card);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-dim); position: relative; z-index: 1;
+}
+.analyst-avatar svg { width: 36px; height: 36px; }
+
+.analyst-day-tag {
+  position: absolute; top: 12px; left: 12px; z-index: 2;
+  background: var(--grad-90); color: var(--bg);
+  font-size: 9px; font-weight: 800; letter-spacing: 1.5px;
+  text-transform: uppercase; padding: 4px 11px; border-radius: 3px;
+}
+
+.analyst-body { padding: var(--space-4); }
+.analyst-name {
+  font-size: 20px; font-weight: 800; color: var(--white); margin-bottom: 3px;
+}
+.analyst-specialty {
+  font-size: 10px; font-weight: 700; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 12px;
+}
+.analyst-bio {
+  font-size: 12px; font-weight: 500; color: var(--text-b);
+  line-height: 1.7; margin-bottom: 14px;
+}
+.analyst-theme {
+  font-size: 12px; font-weight: 500;
+  background: var(--teal-dim); border-left: 3px solid var(--teal);
+  padding: 10px 13px; color: var(--text-b);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  line-height: 1.5;
+}
+.analyst-theme span { color: var(--teal); font-weight: 700; }
+
+/* ═══════════════════════════════════════════════════════════
+   FOOTER CTA
+   ═══════════════════════════════════════════════════════════ */
+.footer-cta {
+  background: var(--bg-2);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: var(--space-8) 40px;
+  position: relative; overflow: hidden;
+}
+/* Grid texture */
+.footer-cta::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.016) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.016) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+.footer-cta-inner {
+  position: relative; z-index: 1;
+  max-width: 520px; margin: 0 auto;
+}
+
+.footer-cta h2 {
+  font-size: clamp(26px, 4.8vw, 48px); font-weight: 900;
+  color: var(--white); line-height: 1.2; margin-bottom: var(--space-3);
+  overflow-wrap: break-word; word-break: break-word;
+}
+.footer-cta > .footer-cta-inner > p {
+  font-size: 15px; font-weight: 500; color: var(--text-b);
+  max-width: 100%; margin: 0 auto var(--space-5);
+  overflow-wrap: break-word;
+}
+
+/* Footer CTA box - same component reused */
+.footer-cta .cta-box {
+  max-width: 100%; margin: 0 auto; text-align: left;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FOOTER BAR
+   ═══════════════════════════════════════════════════════════ */
+.footer-bar {
+  background: var(--bg); border-top: 1px solid var(--border);
+  padding: 24px var(--space-4);
+}
+.footer-bar-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: var(--space-3);
+  max-width: 1080px; margin: 0 auto;
+}
+/* Fix: img is direct child of <a>, not of .footer-logo */
+.footer-logo, .footer-logo img { height: 30px; width: auto; }
+.footer-disc {
+  font-size: 11px; font-weight: 500; color: var(--text);
+  max-width: 560px; line-height: 1.65; text-align: right;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+   UX Pro Max §5: breakpoints 375 / 768 / 1024 / 1440
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 1080px) {
+  .hero-content {
+    grid-template-columns: 1fr 420px;
+    gap: 52px;
+  }
+}
+
+@media (max-width: 860px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  /* Centraliza tudo no mobile */
+  .hero { text-align: center; }
+  .hero-left { align-items: center; }
+  .hero-right { max-width: 540px; width: 100%; align-self: center; }
+  .hero-badge { align-self: center; }
+  .hero-sub { max-width: 100%; text-align: center; }
+  .hero-proof { justify-content: center; text-align: center; }
+  .hero-bullets { justify-content: center; }
+  .hero-separator { align-self: center; }
+  .section-title { text-align: center; }
+  /* Reduce hero padding on tablet */
+  .hero-body { padding-top: 40px; padding-bottom: 40px; }
+}
+
+@media (max-width: 768px) {
+  :root { --space-8: 56px; }
+
+  .carousel-btn { display: none; }
+  .schedule-carousel-wrapper { padding: 0; }
+  .schedule-carousel { padding: 6px 20px 20px; scroll-padding-left: 20px; }
+  /* Largura: viewport - 2×padding (40px) - peek do próximo card (16px) */
+  .schedule-card { flex: 0 0 calc(100vw - 56px); max-width: 340px; }
+
+  .analysts-grid { grid-template-columns: 1fr 1fr; }
+
+  .bonus-items { grid-template-columns: 1fr; }
+  .bonus-item { border-right: none; border-bottom: 1px solid var(--border); }
+  .bonus-item:last-child { border-bottom: none; }
+
+  .hero-bullets { gap: var(--space-3); }
+
+  .footer-bar-inner { flex-direction: column; text-align: center; align-items: center; }
+  .footer-disc { text-align: center; max-width: 100%; }
+
+  .hero-chart { width: 100%; height: 45%; opacity: .03; }
+
+  /* Padding lateral e topo consistentes */
+  .container, .container-sm { padding: 0 40px; }
+  .hero-body { padding: 40px 40px var(--space-4); }
+  .footer-cta { padding-left: 40px; padding-right: 40px; }
+  .section { padding: var(--space-8) 0; }
+}
+
+@media (max-width: 480px) {
+  :root { --space-8: 48px; }
+
+  /* Largura: viewport - 2×padding (32px) - peek (16px) */
+  .schedule-card { flex: 0 0 calc(100vw - 48px); max-width: none; }
+  .schedule-carousel { padding: 6px 16px 20px; scroll-padding-left: 16px; }
+
+  .analysts-grid { grid-template-columns: 1fr; }
+
+  .cta-box { padding: var(--space-4) 20px; }
+
+  .hero h1 { font-size: clamp(29px, 8.2vw, 43px); letter-spacing: -.2px; }
+  .hero-sub { font-size: 15px; }
+
+  /* Padding lateral uniforme 20px */
+  .container, .container-sm { padding: 0 20px; }
+  .hero-body { padding: 40px 20px 32px; }
+  .footer-cta { padding-left: 20px; padding-right: 20px; }
+
+  /* Footer CTA form full width */
+  .footer-cta .cta-box { max-width: 100%; }
+
+  /* Bonus strip tighter */
+  .bonus-header { padding: 10px 20px; }
+  .bonus-item { padding: 20px; }
+
+  /* Analyst cards — centralize text */
+  .analyst-body { text-align: center; }
+  .analyst-specialty { text-align: center; }
+  .analyst-theme { text-align: left; }
+}
+
+/* Extra small — 375px (iPhone SE, older Android) */
+@media (max-width: 390px) {
+  :root {
+    --space-4: 16px;
+    --space-5: 24px;
+  }
+  .hero h1 { font-size: clamp(24px, 7vw, 34px); letter-spacing: -.1px; }
+  /* Mantendo 40px nas laterais mesmo em telas pequenas */
+  .container, .container-sm { padding: 0 40px; }
+  .hero-body { padding: 40px 40px 24px; }
+  .footer-cta { padding-left: 40px; padding-right: 40px; }
+  .schedule-card { flex: 0 0 calc(100vw - 40px); }
+  .schedule-carousel { padding: 6px 12px 20px; scroll-padding-left: 12px; }
+  .schedule-carousel { padding-left: 40px; padding-right: 40px; }
+  .hero-badge { font-size: 9px; letter-spacing: 1.8px; padding: 5px 10px; }
+  .cta-box { padding: 20px 16px; }
+  .btn-cta { font-size: 13px; padding: 16px 12px; }
+  /* Bonus e cards ainda mais compactos */
+  .bonus-item { padding: 16px; }
+  .bonus-item-title { font-size: 19px; }
+  .analyst-body { padding: 14px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Skip to main content — keyboard accessibility (UX §1) -->
+<a href="#main" class="skip-link">Ir para o conteúdo principal</a>
+
+<!-- SVG sprites — definidos uma vez, reutilizados via <use> -->
+<svg style="display:none" aria-hidden="true">
+  <symbol id="icon-person" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+  </symbol>
+</svg>
+
+<!-- ═══════════════════════════════════════════════════════
+     NAV — fixed, TAV identity
+     ═══════════════════════════════════════════════════════ -->
+
+<!-- ═══════════════════════════════════════════════════════
+     SEÇÃO 1: HERO
+     ═══════════════════════════════════════════════════════ -->
+<main id="main">
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-top-line" aria-hidden="true"></div>
+  <div class="hero-blob-blue" aria-hidden="true"></div>
+  <div class="hero-blob-teal" aria-hidden="true"></div>
+  <div class="hero-scan" aria-hidden="true"></div>
+  <canvas class="hero-chart" id="heroChart" aria-hidden="true"></canvas>
+  <div class="hero-vignette" aria-hidden="true"></div>
+
+  <div class="hero-body">
+  <div class="hero-content">
+
+    <!-- COL ESQUERDA: headline + copy -->
+    <div class="hero-left">
+
+      <h1 id="hero-heading" class="reveal">
+        Aprenda a Operar<br>
+        <span class="grad-text">Mini Contratos</span><br>
+        com <span class="grad-text">Quem Realmente Opera</span>
+      </h1>
+
+      <p class="hero-sub reveal d2">
+        5 aulas ao vivo com os melhores analistas do mercado brasileiro — do zero absoluto até estratégias operacionais usadas por traders profissionais.
+      </p>
+
+      <p class="hero-proof reveal d2">
+        Patrocinado por <strong>B3</strong> &nbsp;·&nbsp; Realização <img src="https://tradeaovivo.com.br/wp-content/uploads/2026/04/group_9.webp" alt="Trade ao Vivo" width="92" height="26" decoding="async" style="height:26px;width:auto;vertical-align:middle;display:inline;opacity:.9;" />
+      </p>
+
+      <!-- Bullets de apoio -->
+
+    </div>
+
+    <!-- COL DIREITA: formulário (renderizado via renderForm) -->
+    <div class="hero-right">
+      <div id="form-slot-hero" class="reveal d2"></div>
+    </div>
+  </div><!-- /hero-content -->
+  </div><!-- /hero-body -->
+
+  <!-- Tarja no rodapé da primeira dobra —largura total -->
+  <div class="faixa" aria-hidden="true">
+    <div class="faixa-track">
+      <span class="faixa-item"><span class="faixa-icon">◆</span>Aulas ao vivo e gravadas</span>
+      <span class="faixa-item"><span class="faixa-icon">◆</span>4 analistas especialistas</span>
+      <span class="faixa-item"><span class="faixa-icon">◆</span>App exclusivo de calls</span>
+      <span class="faixa-item"><span class="faixa-icon">◆</span>Acesso gratuito</span>
+      <span class="faixa-item"><span class="faixa-icon">◆</span>Aulas ao vivo e gravadas</span>
+      <span class="faixa-item"><span class="faixa-icon">◆</span>4 analistas especialistas</span>
+      <span class="faixa-item"><span class="faixa-icon">◆</span>App exclusivo de calls</span>
+      <span class="faixa-item"><span class="faixa-icon">◆</span>Acesso gratuito</span>
+      <span class="faixa-item"><span class="faixa-icon">◆</span>Aulas ao vivo e gravadas</span>
+      <span class="faixa-item"><span class="faixa-icon">◆</span>4 analistas especialistas</span>
+      <span class="faixa-item"><span class="faixa-icon">◆</span>App exclusivo de calls</span>
+      <span class="faixa-item"><span class="faixa-icon">◆</span>Acesso gratuito</span>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SEÇÃO 2: CRONOGRAMA
+     ═══════════════════════════════════════════════════════ -->
+<section class="section section-alt" aria-labelledby="sched-heading">
+  <div class="container">
+
+    <h2 class="section-title reveal" id="sched-heading">
+      5 dias que <span class="grad-text">podem mudar</span><br><span class="grad-text">a sua forma de operar</span>
+    </h2>
+
+    <div class="schedule-carousel-wrapper">
+      <button class="carousel-btn carousel-btn--prev" id="schedPrev" aria-label="Slide anterior">&#8249;</button>
+      <div class="schedule-carousel" id="schedCarousel" role="list" aria-label="Cronograma de aulas">
+
+      <!-- DIA 1 -->
+      <article class="schedule-card card-hoverable reveal d1" role="listitem">
+        <div class="card-brackets" aria-hidden="true"></div>
+        <div class="card-header">
+          <span class="card-day-name">SEGUNDA</span>
+          <div class="day-live-tag" aria-label="Ao vivo">Ao Vivo</div>
+        </div>
+        <div class="schedule-body">
+          <span class="card-num-bg" aria-hidden="true">01</span>
+          <p class="day-num">Dia 1 · Aula Completa</p>
+          <p class="day-title">Fundamentos dos Mini Contratos</p>
+          <p class="day-desc">Do zero: o que são WIN e WDO, como funcionam, horários, margens, lotes e como abrir sua primeira conta para operar.</p>
+        </div>
+      </article>
+
+      <!-- DIA 2 -->
+      <article class="schedule-card card-hoverable reveal d2" role="listitem">
+        <div class="card-brackets" aria-hidden="true"></div>
+        <div class="card-header">
+          <span class="card-day-name">TERÇA</span>
+          <div class="day-live-tag" aria-label="Ao vivo">Ao Vivo</div>
+        </div>
+        <div class="schedule-body">
+          <span class="card-num-bg" aria-hidden="true">02</span>
+          <p class="day-num">Dia 2 · Estratégia Operacional</p>
+          <p class="day-title">[Analista 1]</p>
+          <p class="day-desc">[Tema da aula — estratégia e metodologia do analista 1 aqui]</p>
+        </div>
+      </article>
+
+      <!-- DIA 3 -->
+      <article class="schedule-card card-hoverable reveal d2" role="listitem">
+        <div class="card-brackets" aria-hidden="true"></div>
+        <div class="card-header">
+          <span class="card-day-name">QUARTA</span>
+          <div class="day-live-tag" aria-label="Ao vivo">Ao Vivo</div>
+        </div>
+        <div class="schedule-body">
+          <span class="card-num-bg" aria-hidden="true">03</span>
+          <p class="day-num">Dia 3 · Estratégia Operacional</p>
+          <p class="day-title">[Analista 2]</p>
+          <p class="day-desc">[Tema da aula — estratégia e metodologia do analista 2 aqui]</p>
+        </div>
+      </article>
+
+      <!-- DIA 4 -->
+      <article class="schedule-card card-hoverable reveal d3" role="listitem">
+        <div class="card-brackets" aria-hidden="true"></div>
+        <div class="card-header">
+          <span class="card-day-name">QUINTA</span>
+          <div class="day-live-tag" aria-label="Ao vivo">Ao Vivo</div>
+        </div>
+        <div class="schedule-body">
+          <span class="card-num-bg" aria-hidden="true">04</span>
+          <p class="day-num">Dia 4 · Estratégia Operacional</p>
+          <p class="day-title">[Analista 3]</p>
+          <p class="day-desc">[Tema da aula — estratégia e metodologia do analista 3 aqui]</p>
+        </div>
+      </article>
+
+      <!-- DIA 5 -->
+      <article class="schedule-card card-hoverable reveal d3" role="listitem">
+        <div class="card-brackets" aria-hidden="true"></div>
+        <div class="card-header">
+          <span class="card-day-name">SEXTA</span>
+          <div class="day-live-tag" aria-label="Ao vivo">Ao Vivo</div>
+        </div>
+        <div class="schedule-body">
+          <span class="card-num-bg" aria-hidden="true">05</span>
+          <p class="day-num">Dia 5 · Estratégia Operacional</p>
+          <p class="day-title">[Analista 4]</p>
+          <p class="day-desc">[Tema da aula — estratégia e metodologia do analista 4 aqui]</p>
+        </div>
+      </article>
+
+      </div><!-- /schedule-carousel -->
+      <button class="carousel-btn carousel-btn--next" id="schedNext" aria-label="Próximo slide">&#8250;</button>
+      <div class="carousel-hint" id="schedHint" aria-hidden="true">&#8250;</div>
+    </div><!-- /schedule-carousel-wrapper -->
+
+    <div class="carousel-dots" id="schedDots" aria-hidden="true">
+      <span class="carousel-dot active"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+    </div>
+
+    <!-- Bonus strip -->
+    <div class="bonus-strip has-top-accent reveal" role="complementary" aria-label="Bônus para participantes">
+      <div class="bonus-header">Bônus · Apenas para quem assiste tudo</div>
+      <div class="bonus-items">
+
+        <div class="bonus-item">
+          <p class="bonus-item-num">01</p>
+          <div class="bonus-item-line"></div>
+          <p class="bonus-item-title">Gravação das 5 aulas</p>
+          <p class="bonus-item-desc">Acesse o conteúdo completo na plataforma quando quiser, pelo tempo que precisar.</p>
+        </div>
+
+        <div class="bonus-item">
+          <p class="bonus-item-num">02</p>
+          <div class="bonus-item-line"></div>
+          <p class="bonus-item-title">App exclusivo de calls</p>
+          <p class="bonus-item-desc">Sinais e operações em tempo real dos analistas direto no seu celular.</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SEÇÃO 3: ANALISTAS
+     ═══════════════════════════════════════════════════════ -->
+<section class="section" aria-labelledby="analysts-heading">
+  <div class="container">
+
+    <h2 class="section-title reveal" id="analysts-heading">
+      Aprenda com traders<br>
+      que <span class="grad-text">vivem</span> do mercado
+    </h2>
+
+    <div class="analysts-grid" role="list" aria-label="Analistas do evento">
+
+      <!-- ANALISTA 1 -->
+      <article class="analyst-card card-hoverable reveal d1" role="listitem">
+        <div class="analyst-photo" aria-hidden="true">
+          <div class="analyst-avatar">
+            <svg aria-hidden="true"><use href="#icon-person"/></svg>
+          </div>
+          <span class="analyst-day-tag">TERÇA · DIA 2</span>
+        </div>
+        <div class="analyst-body">
+          <p class="analyst-name">[Nome do Analista 1]</p>
+          <p class="analyst-specialty">[Especialidade — ex: Scalping · WIN]</p>
+          <p class="analyst-bio">
+            [Bio do analista — trajetória, anos de mercado, metodologia, diferenciais e por que ele é uma referência no segmento. 2–3 frases impactantes.]
+          </p>
+          <div class="analyst-theme">
+            <span>Tema da aula:</span> [Título da estratégia ou aula que vai apresentar]
+          </div>
+        </div>
+      </article>
+
+      <!-- ANALISTA 2 -->
+      <article class="analyst-card card-hoverable reveal d2" role="listitem">
+        <div class="analyst-photo" aria-hidden="true">
+          <div class="analyst-avatar">
+            <svg aria-hidden="true"><use href="#icon-person"/></svg>
+          </div>
+          <span class="analyst-day-tag">QUARTA · DIA 3</span>
+        </div>
+        <div class="analyst-body">
+          <p class="analyst-name">[Nome do Analista 2]</p>
+          <p class="analyst-specialty">[Especialidade — ex: Day Trade · WDO]</p>
+          <p class="analyst-bio">
+            [Bio do analista — trajetória, anos de mercado, metodologia, diferenciais e por que ele é uma referência no segmento. 2–3 frases impactantes.]
+          </p>
+          <div class="analyst-theme">
+            <span>Tema da aula:</span> [Título da estratégia ou aula que vai apresentar]
+          </div>
+        </div>
+      </article>
+
+      <!-- ANALISTA 3 -->
+      <article class="analyst-card card-hoverable reveal d3" role="listitem">
+        <div class="analyst-photo" aria-hidden="true">
+          <div class="analyst-avatar">
+            <svg aria-hidden="true"><use href="#icon-person"/></svg>
+          </div>
+          <span class="analyst-day-tag">QUINTA · DIA 4</span>
+        </div>
+        <div class="analyst-body">
+          <p class="analyst-name">[Nome do Analista 3]</p>
+          <p class="analyst-specialty">[Especialidade — ex: Swing Trade · WIN]</p>
+          <p class="analyst-bio">
+            [Bio do analista — trajetória, anos de mercado, metodologia, diferenciais e por que ele é uma referência no segmento. 2–3 frases impactantes.]
+          </p>
+          <div class="analyst-theme">
+            <span>Tema da aula:</span> [Título da estratégia ou aula que vai apresentar]
+          </div>
+        </div>
+      </article>
+
+      <!-- ANALISTA 4 -->
+      <article class="analyst-card card-hoverable reveal d4" role="listitem">
+        <div class="analyst-photo" aria-hidden="true">
+          <div class="analyst-avatar">
+            <svg aria-hidden="true"><use href="#icon-person"/></svg>
+          </div>
+          <span class="analyst-day-tag">SEXTA · DIA 5</span>
+        </div>
+        <div class="analyst-body">
+          <p class="analyst-name">[Nome do Analista 4]</p>
+          <p class="analyst-specialty">[Especialidade — ex: Price Action · WIN]</p>
+          <p class="analyst-bio">
+            [Bio do analista — trajetória, anos de mercado, metodologia, diferenciais e por que ele é uma referência no segmento. 2–3 frases impactantes.]
+          </p>
+          <div class="analyst-theme">
+            <span>Tema da aula:</span> [Título da estratégia ou aula que vai apresentar]
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER CTA
+     ═══════════════════════════════════════════════════════ -->
+<section class="footer-cta" aria-labelledby="footer-cta-heading">
+  <div class="footer-cta-inner">
+
+    <h2 class="reveal" id="footer-cta-heading">
+      Sua vaga é <span class="grad-text">gratuita</span>.<br>
+      Mas as vagas são limitadas.
+    </h2>
+
+    <p class="reveal d1">
+      Garanta seu acesso agora e receba tudo no seu WhatsApp antes das aulas começarem.
+    </p>
+
+    <div id="form-slot-footer" class="reveal d2"></div>
+
+  </div>
+</section>
+</main>
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER BAR
+     ═══════════════════════════════════════════════════════ -->
+<footer class="footer-bar" role="contentinfo">
+  <div class="footer-bar-inner">
+    <a href="#" aria-label="Trade ao Vivo">
+      <img
+        src="https://tradeaovivo.com.br/wp-content/uploads/2026/04/group_9.webp"
+        alt="Trade ao Vivo" class="footer-logo" loading="lazy" height="30" width="106"
+      />
+    </a>
+    <p class="footer-disc">
+      Conteúdo de caráter exclusivamente educacional. Não constitui recomendação de investimento.
+      Operações com derivativos envolvem riscos e podem resultar em perdas superiores ao capital investido.
+    </p>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SCRIPTS
+     ═══════════════════════════════════════════════════════ -->
+<script>
+/* -------------------------------------------
+   FORM FACTORY — renderiza o formulário de inscrição
+   DRY: usado em hero e footer CTA
+------------------------------------------- */
+(function () {
+  var LOGO = '<img src="https://tradeaovivo.com.br/wp-content/uploads/2026/04/group_9.webp"'
+           + ' alt="Trade ao Vivo" style="height:16px;width:auto;vertical-align:middle;display:inline;opacity:.7;">';
+
+  var FORMS = [
+    {
+      slot:  'form-slot-hero',
+      pfx:   'hero',
+      btn:   'QUERO MINHA VAGA GRÁTIS →',
+      label: 'Quero minha vaga grátis',
+      terms: 'Seus dados estão protegidos. Sem spam. Você pode cancelar a qualquer momento.'
+    },
+    {
+      slot:  'form-slot-footer',
+      pfx:   'footer',
+      btn:   'QUERO PARTICIPAR GRÁTIS →',
+      label: 'Quero participar grátis',
+      terms: 'Patrocinado por B3 &nbsp;·&nbsp; Realização ' + LOGO + ' &nbsp;·&nbsp; Evento gratuito'
+    }
+  ];
+
+  function field(pfx, id, label, type, placeholder, autocomplete) {
+    return '<div class="form-field">'
+         + '<label for="' + pfx + '-' + id + '">' + label + '</label>'
+         + '<input class="input-field" id="' + pfx + '-' + id + '" type="' + type + '"'
+         + ' name="' + id + '" placeholder="' + placeholder + '"'
+         + ' autocomplete="' + autocomplete + '" required/>'
+         + '</div>';
+  }
+
+  FORMS.forEach(function (f) {
+    var el = document.getElementById(f.slot);
+    if (!el) return;
+    el.innerHTML =
+      '<div class="cta-box has-top-accent" role="region" aria-label="Formulário de inscrição">'
+    + '<p class="cta-box-label">Inscrição <strong>100% gratuita</strong>. Garanta sua vaga agora:</p>'
+    + field(f.pfx, 'nome',  'Nome completo',      'text',  'Seu nome completo',  'name')
+    + field(f.pfx, 'email', 'E-mail',             'email', 'Seu melhor e-mail',  'email')
+    + field(f.pfx, 'wpp',   'WhatsApp (com DDD)', 'tel',   'WhatsApp (com DDD)', 'tel')
+    + '<button type="button" class="btn-cta" aria-label="' + f.label + '">' + f.btn + '</button>'
+    + '<p class="terms">' + f.terms + '</p>'
+    + '</div>';
+  });
+})();
+
+/* -------------------------------------------
+   SCROLL REVEAL
+   IntersectionObserver — UX §7: transform/opacity only
+   Lower threshold on mobile (smaller viewport)
+------------------------------------------- */
+(function () {
+  var isMobile = window.innerWidth < 768;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target); // fire once
+      }
+    });
+  }, { threshold: isMobile ? 0.05 : 0.10 });
+
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+})();
+
+/* -------------------------------------------
+   HERO CANVAS — Candlestick chart
+   Drawn with TAV brand colors: teal + red
+------------------------------------------- */
+(function () {
+  var canvas = document.getElementById('heroChart');
+  if (!canvas) return;
+
+  var dpr = window.devicePixelRatio || 1;
+  var n = 52;
+
+  function rnd(min, max) { return min + Math.random() * (max - min); }
+
+  /* Candle data generated once — stable across redraws */
+  var candles = (function () {
+    var out = [], p = 122000;
+    for (var i = 0; i < n; i++) {
+      var v = rnd(80, 280);
+      var dir = Math.random() > .47 ? 1 : -1;
+      var o = p, c = p + dir * rnd(20, v);
+      out.push({ o: o, c: c, h: Math.max(o, c) + rnd(20, 90), l: Math.min(o, c) - rnd(20, 90) });
+      p = c;
+    }
+    return out;
+  })();
+
+  function resize() {
+    canvas.width  = canvas.offsetWidth  * dpr;
+    canvas.height = canvas.offsetHeight * dpr;
+    draw();
+  }
+
+  function draw() {
+    var ctx = canvas.getContext('2d');
+    var W = canvas.offsetWidth, H = canvas.offsetHeight;
+    ctx.clearRect(0, 0, W * dpr, H * dpr);
+    ctx.scale(dpr, dpr);
+
+    var pad = { t: 40, b: 72, l: 30, r: 50 };
+    var cW = W - pad.l - pad.r;
+    var cH = H - pad.t - pad.b;
+
+    var pxs = candles.flatMap(function (c) { return [c.h, c.l]; });
+    var minP = Math.min.apply(null, pxs) - 120;
+    var maxP = Math.max.apply(null, pxs) + 120;
+    var rng  = maxP - minP;
+    var toY  = function (pr) { return pad.t + cH - ((pr - minP) / rng * cH); };
+    var sp = cW / n, cw = sp * .54;
+
+    /* Grid lines */
+    ctx.strokeStyle = 'rgba(255,255,255,.04)';
+    ctx.lineWidth = 1;
+    for (var r = 0; r <= 5; r++) {
+      ctx.beginPath(); ctx.setLineDash([3, 6]);
+      ctx.moveTo(pad.l, pad.t + cH / 5 * r);
+      ctx.lineTo(pad.l + cW, pad.t + cH / 5 * r);
+      ctx.stroke();
+    }
+    for (var c2 = 0; c2 <= 8; c2++) {
+      ctx.beginPath();
+      ctx.moveTo(pad.l + cW / 8 * c2, pad.t);
+      ctx.lineTo(pad.l + cW / 8 * c2, pad.t + cH);
+      ctx.stroke();
+    }
+    ctx.setLineDash([]);
+
+    /* Volume bars */
+    for (var i = 0; i < n; i++) {
+      var x = pad.l + i * sp + sp / 2;
+      var vol = rnd(18, 60);
+      var bull = candles[i].c >= candles[i].o;
+      ctx.fillStyle = bull ? 'rgba(0,223,200,.22)' : 'rgba(255,58,92,.22)';
+      ctx.fillRect(x - cw / 2, pad.t + cH + 3, cw, vol);
+    }
+
+    /* Moving average line — brand blue */
+    var per = 10, ma = [];
+    for (var i = 0; i < n; i++) {
+      if (i < per - 1) { ma.push(null); continue; }
+      var s = 0;
+      for (var j = i - per + 1; j <= i; j++) s += candles[j].c;
+      ma.push(s / per);
+    }
+    ctx.strokeStyle = 'rgba(0,136,255,.55)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    var started = false;
+    for (var i = 0; i < n; i++) {
+      if (!ma[i]) continue;
+      var x = pad.l + i * sp + sp / 2, y = toY(ma[i]);
+      if (!started) { ctx.moveTo(x, y); started = true; } else { ctx.lineTo(x, y); }
+    }
+    ctx.stroke();
+
+    /* Candles */
+    for (var i = 0; i < n; i++) {
+      var cd = candles[i], x = pad.l + i * sp + sp / 2;
+      var bull = cd.c >= cd.o;
+      var col  = bull ? '#00DFC8' : '#FF3A5C';
+      ctx.strokeStyle = col; ctx.fillStyle = col; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(x, toY(cd.h)); ctx.lineTo(x, toY(cd.l)); ctx.stroke();
+      var bt = Math.min(toY(cd.o), toY(cd.c));
+      var bh = Math.max(Math.abs(toY(cd.o) - toY(cd.c)), 1.5);
+      ctx.fillRect(x - cw / 2, bt, cw, bh);
+    }
+
+    /* Support / Resistance dashed levels */
+    [
+      { p: maxP - rng * .22, col: 'rgba(255,58,92,.5)' },
+      { p: minP + rng * .30, col: 'rgba(0,223,200,.5)' }
+    ].forEach(function (lv) {
+      ctx.strokeStyle = lv.col; ctx.lineWidth = 1;
+      ctx.setLineDash([7, 9]);
+      ctx.beginPath();
+      ctx.moveTo(pad.l, toY(lv.p)); ctx.lineTo(pad.l + cW, toY(lv.p));
+      ctx.stroke();
+    });
+    ctx.setLineDash([]);
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+  }
+
+  resize();
+  var resizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(resize, 150);
+  });
+})();
+
+/* -------------------------------------------
+   SCROLL-DRIVEN CAROUSEL
+   Carrossel avança conforme a seção é scrollada
+   Pausa ao detectar interação manual
+------------------------------------------- */
+(function () {
+  var section  = document.querySelector('[aria-labelledby="sched-heading"]');
+  var carousel = document.getElementById('schedCarousel');
+  var bPrev    = document.getElementById('schedPrev');
+  var bNext    = document.getElementById('schedNext');
+  if (!section || !carousel) return;
+
+  var manualTs = 0;
+  function markManual() {
+    manualTs = Date.now();
+    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+    targetLeft = carousel.scrollLeft; // sincroniza target com posição atual
+  }
+
+  if (bPrev) bPrev.addEventListener('click', markManual);
+  if (bNext) bNext.addEventListener('click', markManual);
+  carousel.addEventListener('mousedown',  markManual, { passive: true });
+  carousel.addEventListener('touchstart', markManual, { passive: true });
+  carousel.addEventListener('wheel',      markManual, { passive: true });
+
+  var rafId = null;
+  var targetLeft = 0;
+
+  function animateLerp() {
+    var diff = targetLeft - carousel.scrollLeft;
+    if (Math.abs(diff) > 0.6) {
+      carousel.scrollLeft += diff * 0.09;
+      rafId = requestAnimationFrame(animateLerp);
+    } else {
+      carousel.scrollLeft = targetLeft;
+      rafId = null;
+    }
+  }
+
+  function onPageScroll() {
+    if (window.innerWidth <= 768) return; // mobile usa auto-scroll, não scroll-driven
+    if (Date.now() - manualTs < 2000) return;
+    var rect    = section.getBoundingClientRect();
+    var viewH   = window.innerHeight;
+    var progress = 1 - (rect.bottom / (viewH + rect.height));
+    progress = Math.max(0, Math.min(1, progress));
+    var maxScroll = carousel.scrollWidth - carousel.clientWidth;
+    targetLeft = progress * maxScroll;
+    if (!rafId) rafId = requestAnimationFrame(animateLerp);
+  }
+
+  window.addEventListener('scroll', onPageScroll, { passive: true });
+})();
+
+/* -------------------------------------------
+   CAROUSEL — Schedule navigation + dots
+   Dynamic CARD_W based on actual rendered card size
+------------------------------------------- */
+(function () {
+  var carousel = document.getElementById('schedCarousel');
+  var btnPrev  = document.getElementById('schedPrev');
+  var btnNext  = document.getElementById('schedNext');
+  var dots     = document.querySelectorAll('#schedDots .carousel-dot');
+  if (!carousel) return;
+
+  function getCardW() {
+    var firstCard = carousel.querySelector('.schedule-card');
+    if (!firstCard) return 286; // fallback: 270 + 16
+    // offsetWidth + gap (from computed style)
+    var gap = parseInt(getComputedStyle(carousel).gap) || 16;
+    return firstCard.offsetWidth + gap;
+  }
+
+  function updateState() {
+    var CARD_W = getCardW();
+    var maxScroll = carousel.scrollWidth - carousel.clientWidth;
+    var idx = Math.min(Math.round(carousel.scrollLeft / CARD_W), dots.length - 1);
+    if (btnPrev) btnPrev.disabled = carousel.scrollLeft <= 2;
+    if (btnNext) btnNext.disabled = carousel.scrollLeft >= maxScroll - 2;
+    dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+  }
+
+  if (btnNext) btnNext.addEventListener('click', function () {
+    carousel.scrollBy({ left: getCardW(), behavior: 'smooth' });
+  });
+  if (btnPrev) btnPrev.addEventListener('click', function () {
+    carousel.scrollBy({ left: -getCardW(), behavior: 'smooth' });
+  });
+  dots.forEach(function (dot, i) {
+    dot.addEventListener('click', function () {
+      carousel.scrollTo({ left: getCardW() * i, behavior: 'smooth' });
+    });
+  });
+
+  carousel.addEventListener('scroll', updateState, { passive: true });
+  window.addEventListener('resize', updateState, { passive: true });
+  updateState();
+})();
+
+/* -------------------------------------------
+   AUTO-SCROLL MOBILE + SWIPE HINT
+   Rola o carrossel automaticamente no mobile
+   Pausa ao toque, retoma após 5s de inatividade
+------------------------------------------- */
+(function () {
+  var carousel = document.getElementById('schedCarousel');
+  var hint     = document.getElementById('schedHint');
+  var section  = document.querySelector('[aria-labelledby="sched-heading"]');
+  if (!carousel) return;
+
+  var INTERVAL   = 3200;  // ms entre slides
+  var RESUME_MS  = 5000;  // ms para retomar após toque
+  var autoTimer  = null;
+  var resumeTimer = null;
+  var interacting = false;
+
+  function isMobile() { return window.innerWidth <= 768; }
+
+  /* ── Helpers ── */
+  function getCardW() {
+    var c = carousel.querySelector('.schedule-card');
+    if (!c) return 286;
+    return c.offsetWidth + (parseInt(getComputedStyle(carousel).gap) || 16);
+  }
+
+  function hideHint() {
+    if (hint && !hint.classList.contains('hidden')) {
+      hint.classList.add('hidden');
+    }
+  }
+
+  /* ── Auto-scroll tick ── */
+  function tick() {
+    if (!isMobile() || interacting) return;
+    var maxScroll = carousel.scrollWidth - carousel.clientWidth;
+    if (carousel.scrollLeft >= maxScroll - 4) {
+      carousel.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      carousel.scrollBy({ left: getCardW(), behavior: 'smooth' });
+    }
+  }
+
+  function startAuto() {
+    if (!isMobile()) return;
+    clearInterval(autoTimer);
+    autoTimer = setInterval(tick, INTERVAL);
+  }
+
+  function pauseAuto() {
+    interacting = true;
+    hideHint();
+    clearInterval(autoTimer);
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(function () {
+      interacting = false;
+      startAuto();
+    }, RESUME_MS);
+  }
+
+  /* ── Bind interação ── */
+  carousel.addEventListener('touchstart', pauseAuto, { passive: true });
+  carousel.addEventListener('mousedown',  pauseAuto, { passive: true });
+
+  /* ── Inicia quando a seção entra na viewport ── */
+  if (section && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        setTimeout(startAuto, 1800);
+        io.disconnect();
+      }
+    }, { threshold: 0.25 });
+    io.observe(section);
+  } else {
+    setTimeout(startAuto, 2000);
+  }
+})();
+
+/* -------------------------------------------
+   PARALLAX — subtle canvas mouse shift
+   UX §7: parallax-subtle + reduced-motion respected via CSS
+   Disabled on touch/mobile — no mousemove events exist
+   Throttled via requestAnimationFrame — max 1 write/frame (~16ms)
+------------------------------------------- */
+(function () {
+  var cv = document.getElementById('heroChart');
+  if (!cv) return;
+  // Skip parallax on touch-primary devices (saves battery + avoids jank)
+  var isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+  if (isTouch) return;
+  var rafPending = false, lastE;
+  window.addEventListener('mousemove', function (e) {
+    lastE = e;
+    if (rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(function () {
+      var rx = (lastE.clientX / window.innerWidth  - .5) * 14;
+      var ry = (lastE.clientY / window.innerHeight - .5) *  7;
+      cv.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
+      rafPending = false;
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
