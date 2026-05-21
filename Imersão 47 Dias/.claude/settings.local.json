@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem \"$env:USERPROFILE\\\\.claude\\\\\" -Force)",
+      "PowerShell(Get-ChildItem \"$env:USERPROFILE\\\\.claude\\\\skills\\\\\" -Force)",
+      "PowerShell(git clone https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git \"$env:USERPROFILE\\\\.claude\\\\skills\\\\ui-ux-pro-max-skill\" 2>&1)",
+      "PowerShell(Get-ChildItem \"$env:USERPROFILE\\\\.claude\\\\skills\\\\ui-ux-pro-max-skill\\\\\" -Force)",
+      "PowerShell(Get-ChildItem \"$env:USERPROFILE\\\\.claude\\\\skills\\\\ui-ux-pro-max-skill\\\\.claude-plugin\\\\\" -Force)",
+      "PowerShell(Get-ChildItem \"$env:USERPROFILE\\\\.claude\\\\skills\\\\ui-ux-pro-max-skill\\\\.claude\\\\\" -Force)",
+      "PowerShell(Get-ChildItem \"$env:USERPROFILE\\\\.claude\\\\skills\\\\ui-ux-pro-max-skill\\\\.claude\\\\skills\\\\\" -Force)",
+      "PowerShell(Get-ChildItem \"$env:USERPROFILE\\\\.claude\\\\skills\\\\\" -Directory | Select-Object Name)",
+      "WebFetch(domain:tradeaovivo.com.br)",
+      "WebFetch(domain:lorenzfabricio.com.br)",
+      "PowerShell(\\(Get-Item \"C:\\\\Users\\\\Jonas\\\\Documents\\\\LPs TAV\\\\lps\\\\Imersão 47 Dias\\\\video hero background.mp4\"\\).Length / 1MB)"
+    ]
+  }
+}

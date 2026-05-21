@@ -1,0 +1,180 @@
+<!-- ══ BLOCO 11 — FOOTER ══
+   Imersão 47 Dias | Trade ao Vivo
+══════════════════════════════════ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+.p11 {
+  background: transparent;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 40px 48px;
+  width: 100%;
+}
+.p11-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── Barra principal ── */
+.p11-bar {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+/* Logo */
+.p11-logo img {
+  height: 48px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Social com linhas — flex: 1 para ocupar o meio */
+.p11-social {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.p11-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+}
+.p11-social-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.p11-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.05);
+  transition: border-color 0.2s, background 0.2s;
+  text-decoration: none !important;
+}
+.p11-social-link:hover {
+  border-color: rgba(255,255,255,0.40);
+  background: rgba(255,255,255,0.10);
+}
+.p11-social-link svg {
+  width: 16px;
+  height: 16px;
+  fill: #FFFFFF;
+  display: block;
+}
+
+/* Copyright */
+.p11-copy {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.40);
+  line-height: 1.5em;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Links legais */
+.p11-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.p11-links a {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.40) !important;
+  text-decoration: none !important;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.p11-links a:hover {
+  color: #FFFFFF !important;
+}
+
+/* ── Disclaimer ── */
+.p11-disclaimer {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 1.8em;
+  color: rgba(255,255,255,0.18);
+  margin: 28px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .p11 { padding: 40px 28px; }
+  .p11-copy { white-space: normal; }
+  .p11-links a { white-space: normal; text-align: right; }
+}
+@media (max-width: 680px) {
+  .p11 { padding: 40px 20px; }
+  .p11-bar {
+    flex-wrap: wrap;
+    gap: 28px;
+  }
+  .p11-logo img { height: 40px; }
+  .p11-social { width: 100%; order: 3; }
+  .p11-copy { order: 4; font-size: 10px; }
+  .p11-links { order: 5; align-items: flex-start; }
+}
+</style>
+
+<div class="p11">
+  <div class="p11-wrap">
+
+    <div class="p11-bar">
+
+      <!-- Logo -->
+      <div class="p11-logo">
+        <img src="https://tradeaovivo.com.br/wp-content/uploads/2026/03/TAV_LOGO_COLOR_NEG_HOR.png" alt="Trade ao Vivo">
+      </div>
+
+      <!-- Linhas + ícones sociais -->
+      <div class="p11-social">
+        <div class="p11-line"></div>
+        <div class="p11-social-icons">
+          <a href="https://www.facebook.com/people/Trade-Ao-Vivo/100082949421066/" class="p11-social-link" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.885v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/tradeaovivooficial/" class="p11-social-link" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+        </div>
+        <div class="p11-line"></div>
+      </div>
+
+      <!-- Copyright -->
+      <div class="p11-copy">Copyright&copy; Trade ao vivo 2026<br>Todos os direitos reservados</div>
+
+      <!-- Links legais -->
+      <div class="p11-links">
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos e Condições</a>
+      </div>
+
+    </div>
+
+    <!-- Disclaimer legal -->
+    <p class="p11-disclaimer">Investimentos em renda variável envolvem riscos e podem resultar em perdas. Resultados passados não são garantia de resultados futuros. Este evento é de caráter educacional e não constitui recomendação de investimento. Os resultados mencionados são individuais e não representam garantia de retorno. Antes de investir, avalie seu perfil de risco e, se necessário, consulte um profissional certificado.</p>
+
+  </div>
+</div>

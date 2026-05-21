@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imersão 47 Dias — O Raio X da Consistência | Pako Moore</title>
+<meta name="description" content="47 dias consecutivos sem fechar no loss. Uma imersão ao vivo de 6h com Pako Moore para destrinchar o método que gerou esse resultado. 30/05 às 9h.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --gold:       #C9A84C;
+  --gold-light: #E8C96A;
+  --gold-dark:  #8A6820;
+  --black:      #0A0A0F;
+  --dark:       #111118;
+  --dark2:      #16161F;
+  --dark3:      #1C1C28;
+  --border:     rgba(201,168,76,0.15);
+  --border2:    rgba(255,255,255,0.06);
+  --text:       #E8E8F0;
+  --text-muted: #7A7A90;
+  --text-dim:   #4A4A60;
+  --red:        #E03A3A;
+  --green:      #2ECC71;
+  --radius:     4px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--text);
+  font-family: 'Syne', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── NOISE TEXTURE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.4;
+}
+
+/* ── TYPOGRAPHY ── */
+.font-display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; }
+.font-mono    { font-family: 'JetBrains Mono', monospace; }
+
+/* ── CONTAINER ── */
+.container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+.container--wide { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.4); }
+  50%       { box-shadow: 0 0 0 12px rgba(201,168,76,0); }
+}
+@keyframes scanline {
+  0%   { top: -10%; }
+  100% { top: 110%; }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+@keyframes countUp {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.fade-up { animation: fadeUp 0.8s ease forwards; }
+.fade-up-d1 { animation: fadeUp 0.8s 0.1s ease both; }
+.fade-up-d2 { animation: fadeUp 0.8s 0.25s ease both; }
+.fade-up-d3 { animation: fadeUp 0.8s 0.4s ease both; }
+.fade-up-d4 { animation: fadeUp 0.8s 0.55s ease both; }
+.fade-up-d5 { animation: fadeUp 0.8s 0.7s ease both; }
+.fade-up-d6 { animation: fadeUp 0.8s 0.85s ease both; }
+
+/* ── TICKER ── */
+.ticker-wrap {
+  background: var(--gold);
+  overflow: hidden;
+  padding: 10px 0;
+  position: relative;
+  z-index: 10;
+}
+.ticker-inner {
+  display: flex;
+  white-space: nowrap;
+  animation: ticker 30s linear infinite;
+}
+.ticker-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--black);
+  padding: 0 48px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.ticker-item::after { content: '  ◆  '; }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: 80px 0 60px;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%),
+    linear-gradient(180deg, #0A0A0F 0%, #0D0D16 100%);
+}
+
+/* Grid lines */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+}
+
+/* Scanline effect */
+.hero-scanline {
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.15), transparent);
+  animation: scanline 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 8px 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+}
+
+.hero-eyebrow-dot {
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: blink 2s ease infinite;
+}
+
+.hero-headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 14vw, 160px);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.hero-headline-sub {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 5vw, 56px);
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  display: block;
+  margin-bottom: 32px;
+  max-width: 700px;
+}
+
+.hero-headline-sub span { color: var(--gold); }
+
+.hero-sub {
+  font-size: 18px;
+  color: var(--text-muted);
+  max-width: 580px;
+  line-height: 1.7;
+  margin-bottom: 48px;
+  font-weight: 400;
+}
+
+/* Event info bar */
+.event-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-bottom: 48px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  max-width: 560px;
+}
+.event-bar-item {
+  flex: 1;
+  min-width: 140px;
+  padding: 16px 20px;
+  border-right: 1px solid var(--border);
+  background: rgba(201,168,76,0.04);
+}
+.event-bar-item:last-child { border-right: none; }
+.event-bar-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+.event-bar-value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--gold);
+  color: var(--black);
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 20px 40px;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  animation: pulse-gold 3s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,168,76,0.35); }
+.btn-primary:hover::before { opacity: 1; }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-arrow { font-size: 18px; transition: transform 0.2s; }
+.btn-primary:hover .btn-arrow { transform: translateX(4px); }
+
+.btn-note {
+  display: block;
+  margin-top: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+}
+
+/* ── INFOMONEY BADGE ── */
+.infomoney-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  padding: 14px 20px;
+  border-radius: var(--radius);
+  margin-bottom: 48px;
+  max-width: 480px;
+}
+.infomoney-icon {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--gold);
+  background: rgba(201,168,76,0.1);
+  padding: 4px 8px;
+  border-radius: 2px;
+  white-space: nowrap;
+  letter-spacing: 0.06em;
+}
+.infomoney-text {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+.infomoney-text strong { color: var(--text); font-weight: 600; }
+
+/* ── SECTION BASE ── */
+section { padding: 100px 0; position: relative; }
+section + section { border-top: 1px solid var(--border2); }
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-label::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.section-headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 6vw, 64px);
+  letter-spacing: 0.03em;
+  line-height: 1;
+  margin-bottom: 24px;
+  color: var(--text);
+}
+.section-headline span { color: var(--gold); }
+
+.section-body {
+  font-size: 17px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  max-width: 640px;
+}
+.section-body strong { color: var(--text); font-weight: 600; }
+
+/* ── STATS ROW ── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: 60px;
+}
+.stat-item {
+  background: var(--dark2);
+  padding: 40px 32px;
+  text-align: center;
+}
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(56px, 8vw, 96px);
+  color: var(--gold);
+  line-height: 1;
+  display: block;
+  animation: countUp 0.6s ease both;
+}
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 8px;
+  display: block;
+}
+
+/* ── PROOF CARD ── */
+.proof-card {
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 40px;
+  margin-top: 48px;
+  position: relative;
+  overflow: hidden;
+}
+.proof-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.proof-quote {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(24px, 4vw, 40px);
+  color: var(--text);
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  margin-bottom: 24px;
+}
+.proof-quote span { color: var(--gold); }
+.proof-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.proof-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--gold);
+  padding: 4px 10px;
+  border-radius: 2px;
+  font-weight: 500;
+}
+.proof-source {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+}
+
+/* ── FOR WHO ── */
+.for-who-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 48px;
+}
+.for-who-card {
+  background: var(--dark2);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius);
+  padding: 32px;
+}
+.for-who-card--yes { border-top: 2px solid var(--gold); }
+.for-who-card--no  { border-top: 2px solid var(--dark3); }
+.for-who-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+.for-who-card--yes .for-who-title { color: var(--gold); }
+.for-who-card--no  .for-who-title { color: var(--text-muted); }
+
+.check-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.check-list li {
+  display: flex;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.check-list li strong { color: var(--text); font-weight: 600; }
+.check-icon { flex-shrink: 0; margin-top: 2px; font-size: 14px; }
+.check-icon--yes { color: var(--gold); }
+.check-icon--no  { color: var(--red); opacity: 0.7; }
+
+/* ── MODULES ── */
+.modules-list { margin-top: 48px; display: flex; flex-direction: column; gap: 2px; }
+.module-item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 0;
+  background: var(--dark2);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.module-item:hover { border-color: var(--border); }
+.module-num {
+  background: rgba(201,168,76,0.06);
+  border-right: 1px solid var(--border2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  padding: 24px 0;
+}
+.module-content { padding: 24px 28px; }
+.module-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+.module-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+.module-qa {
+  margin-top: 2px;
+  background: rgba(201,168,76,0.04);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.module-qa-icon { font-size: 20px; }
+.module-qa-text { font-size: 14px; color: var(--text-muted); }
+.module-qa-text strong { color: var(--gold); }
+
+/* ── TRAINER ── */
+.trainer-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-top: 48px;
+}
+.trainer-visual {
+  position: relative;
+}
+.trainer-img-placeholder {
+  aspect-ratio: 3/4;
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.trainer-img-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.08) 0%, transparent 70%);
+}
+.trainer-img-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  text-align: center;
+  padding: 20px;
+}
+.trainer-badge {
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--black);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border-radius: var(--radius);
+  white-space: nowrap;
+}
+.trainer-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 6vw, 72px);
+  color: var(--text);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.trainer-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.trainer-body {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.trainer-body p + p { margin-top: 16px; }
+.trainer-body strong { color: var(--text); }
+
+/* ── URGENCY ── */
+.urgency-section { background: var(--dark2); }
+.urgency-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.urgency-counter {
+  text-align: center;
+  padding: 40px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--dark3);
+  position: relative;
+  overflow: hidden;
+}
+.urgency-counter::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 60%);
+}
+.counter-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+}
+.counter-date {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 64px;
+  color: var(--gold);
+  line-height: 1;
+  letter-spacing: 0.06em;
+}
+.counter-time {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+.counter-note {
+  margin-top: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+}
+
+/* ── OFFER ── */
+.offer-card {
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 56px;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+.offer-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+.offer-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 4px;
+}
+.offer-subtitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+.offer-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 32px 0;
+}
+.offer-includes { margin-bottom: 32px; }
+.offer-includes-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+}
+.offer-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border2);
+  font-size: 15px;
+  color: var(--text-muted);
+}
+.offer-item:last-child { border-bottom: none; }
+.offer-item-icon { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+.offer-price-area { text-align: center; margin-bottom: 32px; }
+.offer-price-from {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  text-decoration: line-through;
+  margin-bottom: 4px;
+}
+.offer-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 96px;
+  color: var(--gold);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+.offer-price sup {
+  font-size: 36px;
+  vertical-align: super;
+  letter-spacing: 0;
+}
+.offer-price-note {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  margin-top: 4px;
+}
+.offer-cta { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.offer-cta .btn-primary { width: 100%; justify-content: center; }
+.offer-trust {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.offer-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+.offer-trust-icon { color: var(--gold); font-size: 12px; }
+
+/* Value anchor */
+.value-anchor {
+  margin-top: 40px;
+  padding: 28px;
+  background: rgba(201,168,76,0.04);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius);
+}
+.value-anchor p { font-size: 15px; color: var(--text-muted); line-height: 1.7; }
+.value-anchor p + p { margin-top: 12px; }
+.value-anchor strong { color: var(--gold); }
+
+/* ── GUARANTEE ── */
+.guarantee-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 40px;
+  align-items: center;
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 48px;
+  margin-top: 48px;
+}
+.guarantee-seal {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--gold);
+  border-radius: 50%;
+  text-align: center;
+  position: relative;
+}
+.guarantee-seal::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 50%;
+}
+.guarantee-days {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 40px;
+  color: var(--gold);
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+.guarantee-days-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+.guarantee-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  color: var(--text);
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+.guarantee-body { font-size: 15px; color: var(--text-muted); line-height: 1.7; }
+.guarantee-body strong { color: var(--text); }
+
+/* ── FAQ ── */
+.faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 2px; }
+.faq-item {
+  border: 1px solid var(--border2);
+  border-radius: var(--radius);
+  background: var(--dark2);
+  overflow: hidden;
+}
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 28px;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-family: 'Syne', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s;
+  gap: 16px;
+}
+.faq-question:hover { color: var(--gold); }
+.faq-icon {
+  color: var(--gold);
+  font-size: 20px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  font-weight: 300;
+  line-height: 1;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.faq-answer-inner {
+  padding: 0 28px 24px;
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  border-top: 1px solid var(--border2);
+  padding-top: 20px;
+}
+
+/* ── FINAL CTA ── */
+.final-cta {
+  background: var(--dark2);
+  text-align: center;
+  padding: 120px 0;
+}
+.final-cta-headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 8vw, 96px);
+  line-height: 1;
+  letter-spacing: 0.03em;
+  color: var(--text);
+  margin-bottom: 24px;
+}
+.final-cta-headline span { color: var(--gold); }
+.final-cta-body {
+  font-size: 18px;
+  color: var(--text-muted);
+  max-width: 560px;
+  margin: 0 auto 48px;
+  line-height: 1.7;
+}
+.final-cta-body strong { color: var(--text); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black);
+  border-top: 1px solid var(--border2);
+  padding: 40px 0;
+  text-align: center;
+}
+.footer-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  line-height: 1.8;
+}
+.footer-disclaimer {
+  margin-top: 16px;
+  font-size: 10px;
+  color: var(--text-dim);
+  max-width: 700px;
+  margin: 16px auto 0;
+  line-height: 1.6;
+  opacity: 0.6;
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .hero { padding: 60px 0 40px; min-height: auto; }
+  .hero-headline { font-size: clamp(64px, 20vw, 100px); }
+  .stats-row { grid-template-columns: 1fr; }
+  .for-who-grid { grid-template-columns: 1fr; }
+  .trainer-card { grid-template-columns: 1fr; gap: 40px; }
+  .urgency-inner { grid-template-columns: 1fr; gap: 40px; }
+  .guarantee-card { grid-template-columns: 1fr; text-align: center; }
+  .guarantee-seal { margin: 0 auto; }
+  .offer-card { padding: 32px 24px; }
+  .offer-price { font-size: 72px; }
+  .event-bar { flex-direction: column; }
+  .event-bar-item { border-right: none; border-bottom: 1px solid var(--border); }
+  .event-bar-item:last-child { border-bottom: none; }
+  section { padding: 60px 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-inner">
+    <span class="ticker-item">47 dias consecutivos sem fechar no loss</span>
+    <span class="ticker-item">imersão ao vivo · 30 de maio · 9h</span>
+    <span class="ticker-item">6 horas · método completo · Q&A ao vivo</span>
+    <span class="ticker-item">como noticiado pela Infomoney</span>
+    <span class="ticker-item">vagas limitadas · R$47 · uma única edição</span>
+    <span class="ticker-item">47 dias consecutivos sem fechar no loss</span>
+    <span class="ticker-item">imersão ao vivo · 30 de maio · 9h</span>
+    <span class="ticker-item">6 horas · método completo · Q&A ao vivo</span>
+    <span class="ticker-item">como noticiado pela Infomoney</span>
+    <span class="ticker-item">vagas limitadas · R$47 · uma única edição</span>
+  </div>
+</div>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-scanline"></div>
+  <div class="container">
+    <div class="hero-content">
+
+      <div class="hero-eyebrow fade-up">
+        <span class="hero-eyebrow-dot"></span>
+        Imersão ao vivo · 30 de Maio · 9h
+      </div>
+
+      <span class="hero-headline fade-up-d1">47 DIAS SEM LOSS.</span>
+      <span class="hero-headline-sub fade-up-d2">O raio X do método que<br>entrega <span>ganhos consistentes.</span></span>
+
+      <p class="hero-sub fade-up-d3">
+        Uma imersão ao vivo de 6 horas onde o trader por trás desse resultado abre o método, o processo e as decisões que tornaram esse feito possível — para que você entenda o que realmente acelera a consistência.
+      </p>
+
+      <div class="infomoney-badge fade-up-d4">
+        <span class="infomoney-icon">INFOMONEY</span>
+        <span class="infomoney-text"><strong>Resultado noticiado pela Infomoney.</strong> 47 dias consecutivos sem loss — com dinheiro real, no mercado ao vivo.</span>
+      </div>
+
+      <div class="event-bar fade-up-d5">
+        <div class="event-bar-item">
+          <div class="event-bar-label">Data</div>
+          <div class="event-bar-value">30 MAI</div>
+        </div>
+        <div class="event-bar-item">
+          <div class="event-bar-label">Horário</div>
+          <div class="event-bar-value">09:00H</div>
+        </div>
+        <div class="event-bar-item">
+          <div class="event-bar-label">Duração</div>
+          <div class="event-bar-value">6 HORAS</div>
+        </div>
+        <div class="event-bar-item">
+          <div class="event-bar-label">Investimento</div>
+          <div class="event-bar-value">R$ 47</div>
+        </div>
+      </div>
+
+      <div class="fade-up-d6">
+        <a href="#checkout" class="btn-primary">
+          Quero participar da Imersão
+          <span class="btn-arrow">→</span>
+        </a>
+        <span class="btn-note">Acesso imediato após confirmação · Vagas limitadas</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ PROVA ══════════════════ -->
+<section>
+  <div class="container">
+
+    <div class="reveal">
+      <span class="section-label">O feito</span>
+      <h2 class="section-headline">Esse resultado não é<br><span>promessa de vendas.</span><br>É notícia.</h2>
+      <p class="section-body">
+        Em 2025, a Infomoney publicou uma matéria sobre um feito incomum no mercado brasileiro: um trader operando ao vivo, com dinheiro real, que completou <strong>47 dias consecutivos sem fechar um único dia no loss.</strong>
+      </p>
+      <p class="section-body" style="margin-top: 16px;">
+        Não foi em conta demo. Não foi em backtesting. Foi no mercado ao vivo, com pressão real, em dias bons e ruins. E teve um método por trás.
+      </p>
+    </div>
+
+    <div class="proof-card reveal">
+      <div class="proof-quote">
+        "<span>47 dias consecutivos sem fechar no loss.</span> No mercado ao vivo. Com dinheiro real."
+      </div>
+      <div class="proof-meta">
+        <span class="proof-tag">Resultado verificado</span>
+        <span class="proof-source">// Como noticiado pela Infomoney</span>
+      </div>
+    </div>
+
+    <div class="stats-row reveal">
+      <div class="stat-item">
+        <span class="stat-num">47</span>
+        <span class="stat-label">dias consecutivos sem loss</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">6H</span>
+        <span class="stat-label">de imersão ao vivo</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">1X</span>
+        <span class="stat-label">esse evento não se repete</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ PARA QUEM ══════════════════ -->
+<section>
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Qualificação</span>
+      <h2 class="section-headline">Essa imersão<br>foi feita para <span>você se...</span></h2>
+    </div>
+
+    <div class="for-who-grid reveal">
+      <div class="for-who-card for-who-card--yes">
+        <div class="for-who-title">✓ Para quem é</div>
+        <ul class="check-list">
+          <li>
+            <span class="check-icon check-icon--yes">◆</span>
+            <span>Você opera ou está começando — e quer construir <strong>consistência de verdade</strong>, não sorte</span>
+          </li>
+          <li>
+            <span class="check-icon check-icon--yes">◆</span>
+            <span>Você estuda mercado há meses mas ainda não encontrou <strong>um sistema que funcione</strong> na prática</span>
+          </li>
+          <li>
+            <span class="check-icon check-icon--yes">◆</span>
+            <span>Você tem dias bons e ruins sem entender <strong>o que muda entre eles</strong></span>
+          </li>
+          <li>
+            <span class="check-icon check-icon--yes">◆</span>
+            <span>Você quer aprender com quem está <strong>vivendo o resultado agora</strong> — não com teoria desconectada</span>
+          </li>
+          <li>
+            <span class="check-icon check-icon--yes">◆</span>
+            <span>Você quer entender <strong>o que acelera o caminho</strong> para a consistência sem atalhos falsos</span>
+          </li>
+        </ul>
+      </div>
+      <div class="for-who-card for-who-card--no">
+        <div class="for-who-title">✗ Para quem não é</div>
+        <ul class="check-list">
+          <li>
+            <span class="check-icon check-icon--no">✕</span>
+            <span>Você está procurando sinais de trade ou indicações de ativo</span>
+          </li>
+          <li>
+            <span class="check-icon check-icon--no">✕</span>
+            <span>Você quer resultados sem estudar e sem aplicar</span>
+          </li>
+          <li>
+            <span class="check-icon check-icon--no">✕</span>
+            <span>Você ainda não tem noção básica de como o mercado funciona</span>
+          </li>
+          <li>
+            <span class="check-icon check-icon--no">✕</span>
+            <span>Você busca fórmulas mágicas — esse método exige disciplina e processo</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CONTEÚDO ══════════════════ -->
+<section>
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Grade da imersão</span>
+      <h2 class="section-headline">6 horas. O método<br><span>completo. Do zero ao raio X.</span></h2>
+      <p class="section-body">
+        Não é uma palestra motivacional. Não é uma introdução de análise técnica. É o raio X completo de um resultado real — método, rotina, gestão de risco, mentalidade e os bastidores que nunca foram mostrados antes.
+      </p>
+    </div>
+
+    <div class="modules-list reveal">
+      <div class="module-item">
+        <div class="module-num">01</div>
+        <div class="module-content">
+          <div class="module-title">A Virada que Antecede a Consistência</div>
+          <div class="module-desc">O que mudou no método e no mindset antes dos 47 dias começarem. O ponto de inflexão que separa o trader que oscila do trader que estabiliza.</div>
+        </div>
+      </div>
+      <div class="module-item">
+        <div class="module-num">02</div>
+        <div class="module-content">
+          <div class="module-title">O Sistema Dia a Dia</div>
+          <div class="module-desc">Como eram os dias durante os 47 dias: rotina de análise, critérios de entrada e saída, o que era ignorado e o que era priorizado. O processo que se repetiu todos os dias.</div>
+        </div>
+      </div>
+      <div class="module-item">
+        <div class="module-num">03</div>
+        <div class="module-content">
+          <div class="module-title">Gestão de Risco na Prática</div>
+          <div class="module-desc">As regras que protegem o capital sem travar a operação. Como evitar que um dia difícil destrua semanas de consistência — e como tomar essa decisão em tempo real.</div>
+        </div>
+      </div>
+      <div class="module-item">
+        <div class="module-num">04</div>
+        <div class="module-content">
+          <div class="module-title">O Lado Mental da Consistência</div>
+          <div class="module-desc">O que acontece na cabeça de um trader durante uma sequência como essa. Como lidar com pressão, dias lentos e a tentação de forçar operações que não estão no setup.</div>
+        </div>
+      </div>
+      <div class="module-item">
+        <div class="module-num">05</div>
+        <div class="module-content">
+          <div class="module-title">Como Replicar — O Plano de Ação</div>
+          <div class="module-desc">A estrutura prática para aplicar o método a partir do dia seguinte à imersão. Cronograma, metas de processo (não de resultado) e pontos de checagem semana a semana.</div>
+        </div>
+      </div>
+      <div class="module-qa">
+        <span class="module-qa-icon">💬</span>
+        <span class="module-qa-text"><strong>Encerramento — Q&A ao vivo:</strong> Espaço exclusivo para perguntas em tempo real sobre o método, os 47 dias e como adaptar o sistema para a sua realidade.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ QUEM É PAKO ══════════════════ -->
+<section>
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Quem está por trás</span>
+      <h2 class="section-headline">Ele não parou de operar<br>para <span>ensinar.</span></h2>
+    </div>
+    <div class="trainer-card reveal">
+      <div class="trainer-visual">
+        <div class="trainer-img-placeholder">
+          <span class="trainer-img-text">[ FOTO PAKO MOORE ]<br>Inserir foto profissional</span>
+          <div class="trainer-badge">Pako Moore · Trader</div>
+        </div>
+      </div>
+      <div>
+        <div class="trainer-name">PAKO<br>MOORE</div>
+        <div class="trainer-title">Trader · Os 47 dias da Infomoney</div>
+        <div class="trainer-body">
+          <p>Pako Moore é o trader por trás dos 47 dias noticiados pela Infomoney. Ele opera ao vivo todos os dias — e os 47 dias sem loss não aconteceram em condições especiais.</p>
+          <p>Aconteceram no mercado real, com os mesmos ruídos, as mesmas armadilhas e a mesma pressão que qualquer trader enfrenta. <strong>A diferença foi o método.</strong></p>
+          <p>Na Imersão 47 Dias, você não vai aprender com quem teve resultados no passado. Vai aprender com quem está construindo consistência agora — enquanto o resultado ainda está acontecendo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ URGÊNCIA ══════════════════ -->
+<section class="urgency-section">
+  <div class="container">
+    <div class="urgency-inner">
+      <div class="reveal">
+        <span class="section-label">Janela única</span>
+        <h2 class="section-headline">Esse momento<br>tem <span>data de validade.</span></h2>
+        <p class="section-body">
+          Você pode estudar consistência a qualquer momento. Mas o que a Imersão 47 Dias entrega é diferente: Pako vai ensinar um método que está funcionando <em>agora</em> — a memória do processo está fresca, os detalhes que normalmente se perdem com o tempo ainda estão intactos.
+        </p>
+        <p class="section-body" style="margin-top: 16px;">
+          <strong>Essa imersão acontece uma única vez.</strong> Não haverá reprise, não haverá segunda edição sobre esse resultado específico. Daqui a seis meses, ele vai ter evoluído — e esse raio X não vai existir mais.
+        </p>
+      </div>
+      <div class="reveal">
+        <div class="urgency-counter">
+          <div class="counter-label">// Imersão ao vivo</div>
+          <div class="counter-date">30 MAI</div>
+          <div class="counter-time">09:00H</div>
+          <div class="counter-note">Uma única edição · Vagas limitadas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ OFERTA ══════════════════ -->
+<section id="checkout">
+  <div class="container">
+    <div class="reveal" style="text-align: center; margin-bottom: 48px;">
+      <span class="section-label" style="justify-content: center;">Sua vaga</span>
+      <h2 class="section-headline" style="text-align: center;">Invista um dia.<br><span>Economize meses.</span></h2>
+    </div>
+
+    <div class="offer-card reveal">
+      <div class="offer-title">IMERSÃO 47 DIAS</div>
+      <div class="offer-subtitle">O raio X do método que entrega ganhos consistentes</div>
+
+      <div class="offer-includes">
+        <div class="offer-includes-title">// O que está incluído</div>
+        <div class="offer-item">
+          <span class="offer-item-icon">◆</span>
+          <span>6 horas de imersão ao vivo com Pako Moore</span>
+        </div>
+        <div class="offer-item">
+          <span class="offer-item-icon">◆</span>
+          <span>O método completo dos 47 dias — destrinchado em profundidade</span>
+        </div>
+        <div class="offer-item">
+          <span class="offer-item-icon">◆</span>
+          <span>Gestão de risco, mentalidade e sistema dia a dia</span>
+        </div>
+        <div class="offer-item">
+          <span class="offer-item-icon">◆</span>
+          <span>Q&A ao vivo — suas dúvidas respondidas em tempo real</span>
+        </div>
+        <div class="offer-item">
+          <span class="offer-item-icon">◆</span>
+          <span>Gravação completa para rever quando quiser</span>
+        </div>
+        <div class="offer-item">
+          <span class="offer-item-icon">◆</span>
+          <span>Plano de ação para aplicar a partir do dia seguinte</span>
+        </div>
+      </div>
+
+      <div class="offer-divider"></div>
+
+      <div class="offer-price-area">
+        <div class="offer-price-from">De R$297</div>
+        <div class="offer-price"><sup>R$</sup>47</div>
+        <div class="offer-price-note">pagamento único · acesso imediato</div>
+      </div>
+
+      <div class="offer-cta">
+        <a href="#checkout" class="btn-primary">
+          Garantir minha vaga na Imersão 47 Dias
+          <span class="btn-arrow">→</span>
+        </a>
+        <div class="offer-trust">
+          <span class="offer-trust-item"><span class="offer-trust-icon">🔒</span> Pagamento seguro</span>
+          <span class="offer-trust-item"><span class="offer-trust-icon">⚡</span> Confirmação imediata</span>
+          <span class="offer-trust-item"><span class="offer-trust-icon">✓</span> Garantia 7 dias</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="value-anchor reveal">
+      <p>Um único dia de operação fora do método pode custar mais do que o valor dessa imersão. Quantos dias assim você já teve?</p>
+      <p><strong>A Imersão 47 Dias custa R$47 — menos do que um único trade mal gerenciado.</strong></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ GARANTIA ══════════════════ -->
+<section>
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Risco zero</span>
+      <h2 class="section-headline">Garantia<br><span>incondicional.</span></h2>
+    </div>
+    <div class="guarantee-card reveal">
+      <div class="guarantee-seal">
+        <div class="guarantee-days">7</div>
+        <div class="guarantee-days-label">DIAS DE<br>GARANTIA</div>
+      </div>
+      <div>
+        <div class="guarantee-title">100% DO SEU DINHEIRO DE VOLTA</div>
+        <p class="guarantee-body">
+          Se por qualquer motivo você não ficar satisfeito com a imersão, basta enviar um e-mail em até <strong>7 dias após o evento</strong> e devolvemos 100% do seu investimento — sem perguntas, sem burocracia. A única coisa que pedimos é que você venha disposto a aprender. O método e a profundidade da entrega — isso é com o Pako.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FAQ ══════════════════ -->
+<section>
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Dúvidas</span>
+      <h2 class="section-headline">Perguntas<br><span>frequentes.</span></h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Para que nível de trader é indicada?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Para quem já opera ou está começando a operar com dinheiro real. Se você ainda está na fase de entender o que é um pregão, recomendamos primeiro construir essa base antes da imersão.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          A imersão vai ficar gravada?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Sim. Todos os participantes recebem acesso à gravação completa para rever quantas vezes quiserem — sem prazo de expiração.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          O Pako vai dar sinais ou indicações de ativos?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Não. A imersão é sobre método, processo e consistência — não sobre o que comprar ou vender. Se você busca sinais, essa não é a oferta certa para você.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          O resultado de 47 dias sem loss é garantido para mim?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Não. Resultado em trading depende de disciplina, aplicação e contexto individual de cada operador. O que a imersão entrega é o método — o caminho que tornou esse resultado possível. O percurso é seu.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Como funciona a garantia?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Você tem 7 dias corridos após a imersão para solicitar reembolso integral. Basta enviar e-mail para o suporte. Sem perguntas, sem burocracia. 100% devolvido.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FINAL CTA ══════════════════ -->
+<section class="final-cta">
+  <div class="container">
+    <h2 class="final-cta-headline reveal">
+      A consistência não<br>acontece por <span>acidente.</span>
+    </h2>
+    <p class="final-cta-body reveal">
+      Os 47 dias do Pako têm uma explicação. Têm um método. Têm um processo que se repetiu dia após dia até virar notícia. <strong>Nessa imersão, esse processo vai ser aberto do início ao fim.</strong>
+    </p>
+    <div class="reveal">
+      <a href="#checkout" class="btn-primary" style="font-size: 16px; padding: 22px 48px;">
+        Garantir minha vaga na Imersão 47 Dias
+        <span class="btn-arrow">→</span>
+      </a>
+      <div style="margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase;">
+        30 de Maio · 9h · R$47 · Vagas limitadas · Garantia de 7 dias
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-text">
+      IMERSÃO 47 DIAS · PAKO MOORE<br>
+      Suporte: [email de suporte]
+    </div>
+    <div class="footer-disclaimer">
+      Investimentos em renda variável envolvem riscos e podem resultar em perdas. Resultados passados não são garantia de resultados futuros. Este evento é de caráter educacional e não constitui recomendação de investimento. Os resultados mencionados são individuais e não representam garantia de retorno. Antes de investir, avalie seu perfil de risco e, se necessário, consulte um profissional certificado.
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── FAQ TOGGLE ──────────────────────────────────────────
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const answer = item.querySelector('.faq-answer');
+  const isOpen = item.classList.contains('open');
+
+  document.querySelectorAll('.faq-item.open').forEach(el => {
+    el.classList.remove('open');
+    el.querySelector('.faq-answer').style.maxHeight = '0';
+  });
+
+  if (!isOpen) {
+    item.classList.add('open');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  }
+}
+
+// ── SCROLL REVEAL ───────────────────────────────────────
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+revealEls.forEach(el => observer.observe(el));
+
+// ── SMOOTH SCROLL ───────────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>

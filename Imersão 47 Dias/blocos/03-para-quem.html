@@ -1,0 +1,203 @@
+<!-- ══ BLOCO 03 — PARA QUEM É ══
+   Imersão 47 Dias | Trade ao Vivo
+══════════════════════════════════ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+.p03 {
+  background: transparent;
+  padding: 100px 48px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.p03-wrap { max-width: 1140px; margin: 0 auto; position: relative; z-index: 1; }
+
+/* ── HEADLINE ── */
+.p03-h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(40px, 6vw, 80px);
+  font-weight: 800;
+  line-height: 1.0em;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: 0 0 72px;
+}
+.p03-h2 span {
+  background: linear-gradient(135deg, #FBF2AB 0%, #FFCC5A 50%, #D8AA3D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── GRID ── */
+.p03-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: rgba(255,255,255,0.05);
+}
+
+/* ── CARDS ── */
+.p03-card {
+  background: #000E12;
+  padding: 48px 44px 52px;
+  position: relative;
+}
+.p03-card--yes::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #B88723 0%, #FFCC5A 50%, #B88723 100%);
+}
+.p03-card--no::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: rgba(255,255,255,0.08);
+}
+
+/* Card title */
+.p03-card-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+.p03-card--yes .p03-card-title { color: #FFCC5A; }
+.p03-card--no  .p03-card-title { color: #E03A3A; }
+
+.p03-card-title-icon { font-size: 16px; }
+
+/* Lists */
+.p03-list {
+  list-style: none;
+  padding: 0; margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.p03-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.p03-item:first-child { padding-top: 0; }
+.p03-item:last-child  { border-bottom: none; padding-bottom: 0; }
+
+.p03-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+}
+.p03-card--yes .p03-icon { color: #D8AA3D; }
+.p03-card--no  .p03-icon { color: #E03A3A; }
+
+.p03-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.70em;
+  color: rgba(255,255,255,0.50);
+}
+.p03-card--yes .p03-text { color: rgba(255,255,255,0.75); }
+.p03-card--no  .p03-text { color: rgba(255,255,255,0.90); }
+.p03-text strong {
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .p03 { padding: 72px 28px; }
+  .p03-h2 { font-size: clamp(34px, 9vw, 56px); letter-spacing: -1px; margin-bottom: 48px; }
+  .p03-grid { grid-template-columns: 1fr; }
+  .p03-card { padding: 36px 28px 40px; }
+}
+@media (max-width: 480px) {
+  .p03 { padding: 56px 16px; }
+  .p03-h2 { font-size: clamp(30px, 10vw, 44px); }
+}
+</style>
+
+<div class="p03">
+  <div class="p03-wrap">
+
+    <h2 class="p03-h2">
+      Essa imersão<br>
+      foi feita para <span>você se…</span>
+    </h2>
+
+    <div class="p03-grid">
+
+      <!-- PARA QUEM É -->
+      <div class="p03-card p03-card--yes">
+        <div class="p03-card-title">
+          <span class="p03-card-title-icon">✓</span>
+          Para quem é
+        </div>
+        <ul class="p03-list">
+          <li class="p03-item">
+            <span class="p03-icon">◆</span>
+            <span class="p03-text">Você opera ou está começando — e quer construir <strong>consistência de verdade</strong>, não sorte</span>
+          </li>
+          <li class="p03-item">
+            <span class="p03-icon">◆</span>
+            <span class="p03-text">Você estuda mercado há meses mas ainda não encontrou <strong>um sistema que funcione</strong> na prática</span>
+          </li>
+          <li class="p03-item">
+            <span class="p03-icon">◆</span>
+            <span class="p03-text">Você tem dias bons e ruins sem entender <strong>o que muda entre eles</strong></span>
+          </li>
+          <li class="p03-item">
+            <span class="p03-icon">◆</span>
+            <span class="p03-text">Você quer aprender com quem está <strong>vivendo o resultado agora</strong> — não com teoria desconectada</span>
+          </li>
+          <li class="p03-item">
+            <span class="p03-icon">◆</span>
+            <span class="p03-text">Você quer entender <strong>o que acelera o caminho</strong> para a consistência sem atalhos falsos</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- PARA QUEM NÃO É -->
+      <div class="p03-card p03-card--no">
+        <div class="p03-card-title">
+          <span class="p03-card-title-icon">✕</span>
+          Para quem não é
+        </div>
+        <ul class="p03-list">
+          <li class="p03-item">
+            <span class="p03-icon">✕</span>
+            <span class="p03-text">Você está procurando sinais de trade ou indicações de ativo</span>
+          </li>
+          <li class="p03-item">
+            <span class="p03-icon">✕</span>
+            <span class="p03-text">Você quer resultados sem estudar e sem aplicar</span>
+          </li>
+          <li class="p03-item">
+            <span class="p03-icon">✕</span>
+            <span class="p03-text">Você ainda não tem noção básica de como o mercado funciona</span>
+          </li>
+          <li class="p03-item">
+            <span class="p03-icon">✕</span>
+            <span class="p03-text">Você busca fórmulas mágicas — esse método exige disciplina e processo</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>

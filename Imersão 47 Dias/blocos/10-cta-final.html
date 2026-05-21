@@ -1,0 +1,184 @@
+<!-- ══ BLOCO 10 — CTA FINAL ══
+   Imersão 47 Dias | Trade ao Vivo
+══════════════════════════════════ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@keyframes p10-gold-flow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes p10-shine {
+  0%,42%,100% { left:-45%; opacity:0; }
+  18%          { opacity:0.75; }
+  41%          { left:115%; }
+}
+@keyframes p10-pulse {
+  0%,100% { box-shadow: 0 8px 32px rgba(0,0,0,.5), 0 0 20px rgba(216,170,61,.22); }
+  50%      { box-shadow: 0 8px 32px rgba(0,0,0,.5), 0 0 52px rgba(216,170,61,.50); }
+}
+
+.p10 {
+  background: transparent;
+  padding: 120px 48px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* linha dourada no topo */
+.p10::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(216,170,61,0.35) 30%, rgba(216,170,61,0.35) 70%, transparent);
+}
+
+/* brilho radial dourado no fundo (overlay, não depende do bg do Elementor) */
+.p10::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 70%;
+  background: radial-gradient(ellipse at 50% 100%, rgba(216,170,61,0.12) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.p10-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Headline ── */
+.p10-h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(40px, 5.5vw, 76px);
+  font-weight: 800;
+  line-height: 1em;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: 0 0 32px;
+}
+.p10-h2 .gold {
+  background: linear-gradient(135deg, #FBF2AB 0%, #FFCC5A 50%, #D8AA3D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Body ── */
+.p10-body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.8em;
+  color: #FFFFFF;
+  margin: 0 auto 56px;
+  max-width: 560px;
+}
+.p10-body strong {
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+/* ── Botão CTA ── */
+.p10-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px 52px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none !important;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(90deg, #B88723 0%, #D8AA3D 22%, #FFF0A6 48%, #D8AA3D 72%, #B88723 100%);
+  background-size: 300% 100%;
+  animation: p10-gold-flow 1.8s ease-in-out infinite, p10-pulse 3s ease infinite;
+  transition: transform 0.25s, filter 0.25s;
+  margin-bottom: 24px;
+}
+.p10-btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.08);
+  text-decoration: none !important;
+}
+.p10-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -45%;
+  width: 30%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.38), transparent);
+  z-index: 1;
+  animation: p10-shine 3s ease-in-out 1.5s infinite;
+}
+.p10-btn-text {
+  position: relative;
+  z-index: 2;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #000E12 !important;
+}
+.p10-btn-arrow {
+  position: relative;
+  z-index: 2;
+  font-size: 16px;
+  color: #000E12;
+  transition: transform .2s;
+}
+.p10-btn:hover .p10-btn-arrow {
+  transform: translateX(4px);
+}
+
+/* ── Info bar ── */
+.p10-trust {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .p10 { padding: 80px 28px; }
+}
+@media (max-width: 480px) {
+  .p10 { padding: 64px 16px; }
+  .p10-btn { padding: 20px 28px; width: 100%; }
+  .p10-btn-text { font-size: 13px; letter-spacing: 1.5px; }
+}
+</style>
+
+<div class="p10">
+  <div class="p10-wrap">
+
+    <h2 class="p10-h2">A consistência não<br>acontece por <span class="gold">acidente.</span></h2>
+
+    <p class="p10-body">Os 47 dias do Pako têm uma explicação. Têm um método. Têm um processo que se repetiu dia após dia até virar notícia. <strong>Nessa imersão, esse processo vai ser aberto do início ao fim.</strong></p>
+
+    <a href="https://sun.eduzz.com/G92K5PYOWE" class="p10-btn" target="_blank" rel="noopener">
+      <span class="p10-btn-text">Garantir minha vaga na Imersão 47 Dias</span>
+      <span class="p10-btn-arrow">→</span>
+    </a>
+
+    <div class="p10-trust">30 de Maio &nbsp;·&nbsp; 9h &nbsp;·&nbsp; R$47 &nbsp;·&nbsp; Vagas limitadas &nbsp;·&nbsp; Garantia de 7 dias</div>
+
+  </div>
+</div>

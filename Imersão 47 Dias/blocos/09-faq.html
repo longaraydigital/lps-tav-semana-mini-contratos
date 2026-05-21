@@ -1,0 +1,250 @@
+<!-- ══ BLOCO 09 — FAQ ══
+   Imersão 47 Dias | Trade ao Vivo
+══════════════════════════════════ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+.p09,
+.p09 * {
+  box-sizing: border-box;
+}
+
+.p09 {
+  background: transparent;
+  padding: 100px 48px;
+  width: 100%;
+}
+.p09-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* ── Headline ── */
+.p09-h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(40px, 5.5vw, 72px);
+  font-weight: 800;
+  line-height: 1em;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: 0 0 64px;
+}
+.p09-h2 .gold {
+  background: linear-gradient(135deg, #FBF2AB 0%, #FFCC5A 50%, #D8AA3D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Accordion ── */
+.p09-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.p09-item {
+  border-top: 1px solid rgba(255,255,255,0.10);
+  overflow: hidden;
+}
+.p09-item:last-child {
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+.p09-item.open {
+  border-top-color: rgba(216,170,61,0.30);
+}
+
+.p09-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px 0;
+  /* reset completo — Elementor injeta estilos de botão */
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  border-radius: 0 !important;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  text-align: left;
+  transition: opacity 0.2s ease;
+}
+.p09-question:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+  opacity: 0.85;
+}
+.p09-question:focus,
+.p09-question:active {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.p09-question-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: #FFFFFF !important;
+  line-height: 1.4em;
+  transition: color 0.2s ease;
+}
+.p09-question:hover .p09-question-text {
+  color: #FFCC5A !important;
+}
+.p09-item.open .p09-question-text {
+  color: #FFFFFF !important;
+}
+
+/* ícone + que vira × */
+.p09-icon {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border: 1px solid rgba(255,255,255,0.20) !important;
+  border-radius: 4px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  color: #FFFFFF !important;
+  line-height: 1;
+  background: transparent !important;
+}
+.p09-question:hover .p09-icon {
+  border-color: rgba(255,204,90,0.45) !important;
+  color: #FFCC5A !important;
+}
+.p09-item.open .p09-icon {
+  background: rgba(216,170,61,0.12) !important;
+  border-color: rgba(216,170,61,0.40) !important;
+  color: #FFCC5A !important;
+  transform: rotate(45deg);
+}
+
+/* ── Resposta ── */
+.p09-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.p09-item.open .p09-answer {
+  max-height: 500px;
+}
+.p09-answer-inner {
+  padding: 4px 48px 32px 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.85em;
+  color: #FFFFFF;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .p09 { padding: 80px 32px; }
+}
+@media (max-width: 600px) {
+  .p09 { padding: 64px 20px; }
+  .p09-h2 {
+    font-size: clamp(34px, 9vw, 52px);
+    letter-spacing: -1.5px;
+    margin-bottom: 40px;
+  }
+  .p09-question-text { font-size: 15px; }
+  .p09-answer-inner {
+    font-size: 14px;
+    line-height: 1.75em;
+    padding-right: 0;
+    padding-bottom: 24px;
+  }
+  .p09-icon { width: 28px; height: 28px; min-width: 28px; font-size: 16px; }
+}
+@media (max-width: 400px) {
+  .p09 { padding: 56px 16px; }
+  .p09-question { padding: 20px 0; gap: 16px; }
+  .p09-question-text { font-size: 14px; }
+}
+</style>
+
+<div class="p09">
+  <div class="p09-wrap">
+
+    <h2 class="p09-h2">Perguntas<br><span class="gold">frequentes.</span></h2>
+
+    <div class="p09-list">
+
+      <div class="p09-item">
+        <button class="p09-question" onclick="p09Toggle(this)">
+          <span class="p09-question-text">Para que nível de trader é indicada?</span>
+          <span class="p09-icon">+</span>
+        </button>
+        <div class="p09-answer">
+          <div class="p09-answer-inner">Para quem já opera ou está começando a operar com dinheiro real. Se você ainda está na fase de entender o que é um pregão, recomendamos primeiro construir essa base antes da imersão.</div>
+        </div>
+      </div>
+
+      <div class="p09-item">
+        <button class="p09-question" onclick="p09Toggle(this)">
+          <span class="p09-question-text">A imersão vai ficar gravada?</span>
+          <span class="p09-icon">+</span>
+        </button>
+        <div class="p09-answer">
+          <div class="p09-answer-inner">Sim. Todos os participantes recebem acesso à gravação completa para rever quantas vezes quiserem, sem prazo de expiração.</div>
+        </div>
+      </div>
+
+      <div class="p09-item">
+        <button class="p09-question" onclick="p09Toggle(this)">
+          <span class="p09-question-text">O Pako vai dar sinais ou indicações de ativos?</span>
+          <span class="p09-icon">+</span>
+        </button>
+        <div class="p09-answer">
+          <div class="p09-answer-inner">Não. A imersão é sobre método, processo e consistência. Não sobre o que comprar ou vender. Se você busca sinais, essa não é a oferta certa para você.</div>
+        </div>
+      </div>
+
+      <div class="p09-item">
+        <button class="p09-question" onclick="p09Toggle(this)">
+          <span class="p09-question-text">O resultado de 47 dias sem loss é garantido para mim?</span>
+          <span class="p09-icon">+</span>
+        </button>
+        <div class="p09-answer">
+          <div class="p09-answer-inner">Não. Resultado em trading depende de disciplina, aplicação e contexto individual de cada operador. O que a imersão entrega é o método. O caminho que tornou esse resultado possível. O percurso é seu.</div>
+        </div>
+      </div>
+
+      <div class="p09-item">
+        <button class="p09-question" onclick="p09Toggle(this)">
+          <span class="p09-question-text">Como funciona a garantia?</span>
+          <span class="p09-icon">+</span>
+        </button>
+        <div class="p09-answer">
+          <div class="p09-answer-inner">Você tem 7 dias corridos após a imersão para solicitar reembolso integral. Basta enviar e-mail para o suporte. Sem perguntas. Sem burocracia. 100% devolvido.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+function p09Toggle(btn) {
+  var item = btn.closest('.p09-item');
+  var isOpen = item.classList.contains('open');
+  document.querySelectorAll('.p09-item.open').forEach(function(el) {
+    el.classList.remove('open');
+  });
+  if (!isOpen) item.classList.add('open');
+}
+</script>

@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(start http://localhost:8080/lp_semana_mini_contratos_v2.html)",
+      "Bash(netstat -ano)",
+      "Bash(findstr :8080)",
+      "Bash(python -m http.server 8080)",
+      "Bash(ping -n 2 127.0.0.1 > nul && start http://localhost:8080/lp_semana_mini_contratos_v2.html)",
+      "Bash(gh auth *)",
+      "Bash(vercel --version)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit -m 'feat: landing page Semana dos Mini Contratos v2 *)",
+      "Bash(git config *)",
+      "Bash(gh repo *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(vercel --prod --yes)",
+      "Bash(vercel --prod --yes --name lps-tav-mini-contratos)",
+      "PowerShell(Get-Command obsidian -ErrorAction SilentlyContinue; where.exe obsidian 2>&1; ls \"$env:APPDATA\\\\obsidian\" -ErrorAction SilentlyContinue | Select-Object -First 5)",
+      "PowerShell(npm list -g obsidian 2>&1)",
+      "PowerShell(npx obsidian --version 2>&1)",
+      "PowerShell($obsConfig = \"$env:APPDATA\\\\obsidian\\\\obsidian.json\"; if \\(Test-Path $obsConfig\\) { Get-Content $obsConfig | ConvertFrom-Json | Select-Object -ExpandProperty vaults | Format-List } else { \"Config not found\" })"
+    ],
+    "additionalDirectories": [
+      "D:\\Games\\Claude Code Projetos\\LPS TAV - Claude TAV"
+    ]
+  }
+}

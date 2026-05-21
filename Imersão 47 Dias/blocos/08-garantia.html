@@ -1,0 +1,157 @@
+<!-- ══ BLOCO 08 — GARANTIA ══
+   Imersão 47 Dias | Trade ao Vivo
+══════════════════════════════════ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+.p08 {
+  background: transparent;
+  padding: 100px 48px;
+  width: 100%;
+}
+.p08-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* ── Headline ── */
+.p08-h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(40px, 5.5vw, 72px);
+  font-weight: 800;
+  line-height: 1em;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: 0 0 64px;
+}
+.p08-h2 .gold {
+  background: linear-gradient(135deg, #FBF2AB 0%, #FFCC5A 50%, #D8AA3D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Card ── */
+.p08-card {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 56px;
+  align-items: center;
+  border-top: 1px solid rgba(255,255,255,0.10);
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+  padding: 56px 0;
+  position: relative;
+}
+
+/* linha dourada no topo */
+.p08-card::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, #FFCC5A, transparent);
+}
+
+/* ── Selo ── */
+.p08-seal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 1px solid rgba(216,170,61,0.35);
+  background: radial-gradient(ellipse at center, rgba(216,170,61,0.10) 0%, transparent 70%);
+  flex-shrink: 0;
+  text-align: center;
+  gap: 4px;
+}
+.p08-seal-num {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 0.85em;
+  letter-spacing: -3px;
+  background: linear-gradient(140deg, #FBF2AB, #FFCC5A, #D8AA3D);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.p08-seal-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(216,170,61,0.70);
+  line-height: 1.4em;
+  margin-top: 4px;
+}
+
+/* ── Conteúdo ── */
+.p08-content-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #FFCC5A;
+  margin-bottom: 20px;
+  display: block;
+}
+.p08-body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.85em;
+  color: #FFFFFF;
+  margin: 0;
+}
+.p08-body strong {
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+/* ── Responsive ── */
+@media (max-width: 680px) {
+  .p08 { padding: 72px 24px; }
+  .p08-h2 { margin-bottom: 48px; }
+  .p08-card {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    text-align: center;
+    padding: 48px 0;
+  }
+  .p08-seal { margin: 0 auto; }
+  .p08-card::before { width: 60px; left: 50%; transform: translateX(-50%); }
+  .p08-content-title { text-align: center; }
+}
+@media (max-width: 480px) {
+  .p08 { padding: 56px 16px; }
+}
+</style>
+
+<div class="p08">
+  <div class="p08-wrap">
+
+    <h2 class="p08-h2">Garantia<br><span class="gold">incondicional.</span></h2>
+
+    <div class="p08-card">
+      <div class="p08-seal">
+        <span class="p08-seal-num">7</span>
+        <span class="p08-seal-label">DIAS DE<br>GARANTIA</span>
+      </div>
+      <div>
+        <span class="p08-content-title">100% do seu dinheiro de volta</span>
+        <p class="p08-body">
+          Se por qualquer motivo você não ficar satisfeito com a imersão, basta enviar um e-mail em até <strong>7 dias após o evento</strong> e devolvemos 100% do seu investimento. Sem perguntas. Sem burocracia. A única coisa que pedimos é que você venha disposto a aprender.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>

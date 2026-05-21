@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Semana dos Mini Contratos – Inscreva-se Grátis</title>
+<style>
+  :root {
+    --dark: #0A0E1A;
+    --navy: #0D1B3E;
+    --card: #131929;
+    --gold: #C9A84C;
+    --gold-light: #E8C96D;
+    --white: #FFFFFF;
+    --gray: #8A95A8;
+    --light: #E8EDF5;
+    --accent: #1A5FC8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--dark); color: var(--white); font-family: 'Segoe UI', sans-serif; line-height: 1.6; }
+  a { color: var(--gold); }
+
+  /* ── HERO ─────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0A0E1A 0%, #0D1B3E 60%, #0A0E1A 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 80px 24px 60px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: var(--gold);
+  }
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 6px 20px;
+    border-radius: 2px;
+    margin-bottom: 32px;
+  }
+  .hero h1 {
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 900;
+    line-height: 1.1;
+    max-width: 900px;
+    margin: 0 auto 20px;
+  }
+  .hero h1 span { color: var(--gold); display: block; }
+  .hero-sub {
+    font-size: clamp(17px, 2.5vw, 22px);
+    color: var(--light);
+    max-width: 680px;
+    margin: 0 auto 16px;
+  }
+  .hero-proof {
+    font-size: 14px;
+    color: var(--gray);
+    margin-bottom: 40px;
+  }
+  .hero-proof strong { color: var(--gold-light); }
+
+  /* ── CTA BOX ──────────────────────────────── */
+  .cta-box {
+    background: var(--card);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 8px;
+    padding: 36px 40px;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .cta-box p {
+    font-size: 13px;
+    color: var(--gray);
+    margin-bottom: 16px;
+  }
+  .cta-box p strong { color: var(--gold); }
+  .input-field {
+    width: 100%;
+    background: #0D1B3E;
+    border: 1px solid #1A2540;
+    border-radius: 4px;
+    padding: 14px 16px;
+    font-size: 15px;
+    color: var(--white);
+    margin-bottom: 12px;
+    outline: none;
+    transition: border-color .2s;
+  }
+  .input-field::placeholder { color: var(--gray); }
+  .input-field:focus { border-color: var(--gold); }
+  .btn-cta {
+    width: 100%;
+    background: var(--gold);
+    color: #0A0E1A;
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 4px;
+    padding: 16px;
+    cursor: pointer;
+    transition: background .2s, transform .1s;
+    margin-bottom: 12px;
+  }
+  .btn-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-cta:active { transform: translateY(0); }
+  .terms {
+    font-size: 11px;
+    color: var(--gray);
+    text-align: center;
+  }
+
+  /* ── WHAT YOU GET (hero add-on) ──────────── */
+  .hero-bullets {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 48px;
+  }
+  .hero-bullet {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 14px; color: var(--light);
+  }
+  .hero-bullet::before {
+    content: "✓";
+    background: var(--gold);
+    color: var(--dark);
+    font-weight: 900;
+    font-size: 11px;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* ── SECTION WRAPPER ─────────────────────── */
+  section { padding: 80px 24px; }
+  .container { max-width: 1000px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px; letter-spacing: 4px; font-weight: 700;
+    color: var(--gold); text-transform: uppercase; margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(26px, 4vw, 40px);
+    font-weight: 800; line-height: 1.2;
+    margin-bottom: 48px;
+  }
+
+  /* ── CRONOGRAMA ───────────────────────────── */
+  .cronograma { background: #0D1B3E; }
+  .schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 16px;
+  }
+  .schedule-card {
+    background: var(--card);
+    border: 1px solid #1A2540;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .schedule-card.featured { border-color: rgba(201,168,76,.4); }
+  .day-badge {
+    background: var(--gold);
+    color: var(--dark);
+    font-weight: 800;
+    font-size: 13px;
+    text-align: center;
+    padding: 10px;
+    letter-spacing: 1px;
+  }
+  .schedule-card.featured .day-badge {
+    background: var(--accent);
+    color: var(--white);
+  }
+  .schedule-body { padding: 16px; }
+  .schedule-body .day-num { font-size: 10px; color: var(--gray); margin-bottom: 4px; }
+  .schedule-body .day-title { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+  .schedule-body .day-desc { font-size: 12px; color: var(--gray); line-height: 1.5; }
+
+  .bonus-strip {
+    margin-top: 40px;
+    background: var(--card);
+    border: 1px solid rgba(201,168,76,.25);
+    border-radius: 6px;
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .bonus-strip .bonus-icon { font-size: 28px; }
+  .bonus-strip .bonus-text strong { color: var(--gold); font-size: 15px; display: block; margin-bottom: 4px; }
+  .bonus-strip .bonus-text span { font-size: 13px; color: var(--gray); }
+  .bonus-divider { width: 1px; height: 50px; background: #1A2540; }
+
+  /* ── ANALISTAS ────────────────────────────── */
+  .analistas { background: var(--dark); }
+  .analysts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+  .analyst-card {
+    background: var(--card);
+    border: 1px solid #1A2540;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: border-color .2s, transform .2s;
+  }
+  .analyst-card:hover { border-color: rgba(201,168,76,.4); transform: translateY(-3px); }
+  .analyst-photo {
+    background: #1A2540;
+    height: 200px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 40px; color: var(--gray);
+    position: relative;
+  }
+  .analyst-day-tag {
+    position: absolute;
+    top: 12px; left: 12px;
+    background: var(--gold);
+    color: var(--dark);
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .analyst-body { padding: 20px; }
+  .analyst-name { font-size: 18px; font-weight: 800; color: var(--white); margin-bottom: 4px; }
+  .analyst-specialty { font-size: 12px; color: var(--gold); margin-bottom: 12px; font-weight: 600; }
+  .analyst-bio { font-size: 13px; color: var(--gray); line-height: 1.6; margin-bottom: 14px; }
+  .analyst-theme {
+    font-size: 12px;
+    background: rgba(201,168,76,.1);
+    border-left: 3px solid var(--gold);
+    padding: 8px 12px;
+    color: var(--light);
+    border-radius: 0 4px 4px 0;
+  }
+  .analyst-theme span { color: var(--gold); font-weight: 700; }
+
+  /* ── FOOTER CTA ───────────────────────────── */
+  .footer-cta {
+    background: linear-gradient(135deg, #0D1B3E 0%, #0A0E1A 100%);
+    text-align: center; padding: 80px 24px;
+    border-top: 1px solid #1A2540;
+  }
+  .footer-cta h2 { font-size: clamp(24px, 4vw, 40px); font-weight: 800; margin-bottom: 16px; }
+  .footer-cta h2 span { color: var(--gold); }
+  .footer-cta p { color: var(--gray); font-size: 15px; max-width: 500px; margin: 0 auto 36px; }
+
+  /* ── RESPONSIVE ──────────────────────────── */
+  @media (max-width: 600px) {
+    .cta-box { padding: 24px 20px; }
+    .bonus-strip { flex-direction: column; gap: 16px; }
+    .bonus-divider { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     SEÇÃO 1: HERO
+═══════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-badge">Evento Online · Gratuito · 5 Dias</div>
+
+  <h1>
+    Aprenda a Operar<br>
+    <span>Mini Contratos</span>
+    com Quem Realmente Opera
+  </h1>
+
+  <p class="hero-sub">
+    5 aulas ao vivo com os melhores analistas do mercado brasileiro — do zero absoluto até estratégias operacionais usadas por traders profissionais.
+  </p>
+
+  <p class="hero-proof">
+    Patrocinado por <strong>B3</strong> &nbsp;·&nbsp; Realização <strong>[Trade ao Vivo]</strong>
+  </p>
+
+  <!-- FORM DE CAPTURA -->
+  <div class="cta-box">
+    <p>Inscrição <strong>100% gratuita</strong>. Garanta sua vaga agora:</p>
+    <input class="input-field" type="text" placeholder="Seu nome completo" />
+    <input class="input-field" type="email" placeholder="Seu melhor e-mail" />
+    <input class="input-field" type="tel" placeholder="WhatsApp (com DDD)" />
+    <button class="btn-cta">QUERO MINHA VAGA GRÁTIS →</button>
+    <p class="terms">Seus dados estão protegidos. Sem spam. Você pode cancelar a qualquer momento.</p>
+  </div>
+
+  <!-- BULLETS DE APOIO -->
+  <div class="hero-bullets">
+    <span class="hero-bullet">Aulas ao vivo e gravadas</span>
+    <span class="hero-bullet">4 analistas especialistas</span>
+    <span class="hero-bullet">App exclusivo de calls</span>
+    <span class="hero-bullet">Acesso gratuito</span>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SEÇÃO 2: CRONOGRAMA
+═══════════════════════════════════════════════ -->
+<section class="cronograma">
+  <div class="container">
+    <p class="section-label">Cronograma</p>
+    <h2 class="section-title">5 dias que podem mudar<br>a sua forma de operar</h2>
+
+    <div class="schedule-grid">
+
+      <div class="schedule-card featured">
+        <div class="day-badge">SEGUNDA</div>
+        <div class="schedule-body">
+          <p class="day-num">Dia 1 · Aula Completa</p>
+          <p class="day-title">Fundamentos dos Mini Contratos</p>
+          <p class="day-desc">Do zero: o que são WIN e WDO, como funcionam, horários, margens, lotes e como abrir sua primeira conta para operar.</p>
+        </div>
+      </div>
+
+      <div class="schedule-card">
+        <div class="day-badge">TERÇA</div>
+        <div class="schedule-body">
+          <p class="day-num">Dia 2 · Estratégia Operacional</p>
+          <p class="day-title">[Analista 1]</p>
+          <p class="day-desc">[Tema da aula — estratégia e metodologia do analista 1 aqui]</p>
+        </div>
+      </div>
+
+      <div class="schedule-card">
+        <div class="day-badge">QUARTA</div>
+        <div class="schedule-body">
+          <p class="day-num">Dia 3 · Estratégia Operacional</p>
+          <p class="day-title">[Analista 2]</p>
+          <p class="day-desc">[Tema da aula — estratégia e metodologia do analista 2 aqui]</p>
+        </div>
+      </div>
+
+      <div class="schedule-card">
+        <div class="day-badge">QUINTA</div>
+        <div class="schedule-body">
+          <p class="day-num">Dia 4 · Estratégia Operacional</p>
+          <p class="day-title">[Analista 3]</p>
+          <p class="day-desc">[Tema da aula — estratégia e metodologia do analista 3 aqui]</p>
+        </div>
+      </div>
+
+      <div class="schedule-card">
+        <div class="day-badge">SEXTA</div>
+        <div class="schedule-body">
+          <p class="day-num">Dia 5 · Estratégia Operacional</p>
+          <p class="day-title">[Analista 4]</p>
+          <p class="day-desc">[Tema da aula — estratégia e metodologia do analista 4 aqui]</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BÔNUS STRIP -->
+    <div class="bonus-strip">
+      <div class="bonus-icon">🎬</div>
+      <div class="bonus-text">
+        <strong>Assistiu tudo? Você ganha:</strong>
+        <span>Gravação das 5 aulas na plataforma + Acesso ao App exclusivo de calls em tempo real</span>
+      </div>
+      <div class="bonus-divider"></div>
+      <div class="bonus-icon">📲</div>
+      <div class="bonus-text">
+        <strong>App exclusivo de calls</strong>
+        <span>Sinais e operações em tempo real dos analistas, direto no seu celular</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SEÇÃO 3: BIO DOS ANALISTAS
+═══════════════════════════════════════════════ -->
+<section class="analistas">
+  <div class="container">
+    <p class="section-label">Quem vai ensinar</p>
+    <h2 class="section-title">Aprenda com traders<br>que <em style="color:var(--gold);font-style:normal">vivem</em> do mercado</h2>
+
+    <div class="analysts-grid">
+
+      <!-- ANALISTA 1 -->
+      <div class="analyst-card">
+        <div class="analyst-photo">
+          👤
+          <div class="analyst-day-tag">TERÇA · DIA 2</div>
+        </div>
+        <div class="analyst-body">
+          <p class="analyst-name">[Nome do Analista 1]</p>
+          <p class="analyst-specialty">[Especialidade — ex: Scalping · WIN]</p>
+          <p class="analyst-bio">
+            [Bio do analista — trajetória, anos de mercado, metodologia, diferenciais e por que ele é uma referência no segmento. 2–3 frases impactantes.]
+          </p>
+          <div class="analyst-theme">
+            <span>Tema da aula:</span> [Título da estratégia ou aula que vai apresentar]
+          </div>
+        </div>
+      </div>
+
+      <!-- ANALISTA 2 -->
+      <div class="analyst-card">
+        <div class="analyst-photo">
+          👤
+          <div class="analyst-day-tag">QUARTA · DIA 3</div>
+        </div>
+        <div class="analyst-body">
+          <p class="analyst-name">[Nome do Analista 2]</p>
+          <p class="analyst-specialty">[Especialidade — ex: Day Trade · WDO]</p>
+          <p class="analyst-bio">
+            [Bio do analista — trajetória, anos de mercado, metodologia, diferenciais e por que ele é uma referência no segmento. 2–3 frases impactantes.]
+          </p>
+          <div class="analyst-theme">
+            <span>Tema da aula:</span> [Título da estratégia ou aula que vai apresentar]
+          </div>
+        </div>
+      </div>
+
+      <!-- ANALISTA 3 -->
+      <div class="analyst-card">
+        <div class="analyst-photo">
+          👤
+          <div class="analyst-day-tag">QUINTA · DIA 4</div>
+        </div>
+        <div class="analyst-body">
+          <p class="analyst-name">[Nome do Analista 3]</p>
+          <p class="analyst-specialty">[Especialidade — ex: Swing Trade · WIN]</p>
+          <p class="analyst-bio">
+            [Bio do analista — trajetória, anos de mercado, metodologia, diferenciais e por que ele é uma referência no segmento. 2–3 frases impactantes.]
+          </p>
+          <div class="analyst-theme">
+            <span>Tema da aula:</span> [Título da estratégia ou aula que vai apresentar]
+          </div>
+        </div>
+      </div>
+
+      <!-- ANALISTA 4 -->
+      <div class="analyst-card">
+        <div class="analyst-photo">
+          👤
+          <div class="analyst-day-tag">SEXTA · DIA 5</div>
+        </div>
+        <div class="analyst-body">
+          <p class="analyst-name">[Nome do Analista 4]</p>
+          <p class="analyst-specialty">[Especialidade — ex: Price Action · WIN]</p>
+          <p class="analyst-bio">
+            [Bio do analista — trajetória, anos de mercado, metodologia, diferenciais e por que ele é uma referência no segmento. 2–3 frases impactantes.]
+          </p>
+          <div class="analyst-theme">
+            <span>Tema da aula:</span> [Título da estratégia ou aula que vai apresentar]
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER CTA
+═══════════════════════════════════════════════ -->
+<section class="footer-cta">
+  <h2>Sua vaga é <span>gratuita</span>.<br>Mas as vagas são limitadas.</h2>
+  <p>Garanta seu acesso agora e receba tudo no seu WhatsApp antes das aulas começarem.</p>
+
+  <div class="cta-box" style="margin: 0 auto;">
+    <p>Inscrição <strong>100% gratuita</strong>. Garanta sua vaga agora:</p>
+    <input class="input-field" type="text" placeholder="Seu nome completo" />
+    <input class="input-field" type="email" placeholder="Seu melhor e-mail" />
+    <input class="input-field" type="tel" placeholder="WhatsApp (com DDD)" />
+    <button class="btn-cta">QUERO PARTICIPAR GRÁTIS →</button>
+    <p class="terms">Patrocinado por B3 &nbsp;·&nbsp; Realização [Trade ao Vivo] &nbsp;·&nbsp; Evento gratuito</p>
+  </div>
+</section>
+
+</body>
+</html>

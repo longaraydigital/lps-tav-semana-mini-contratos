@@ -1,0 +1,197 @@
+<!-- ══ BLOCO 04 — URGÊNCIA ══
+   Imersão 47 Dias | Trade ao Vivo
+══════════════════════════════════ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+.p04 {
+  background-color: #080600;
+  background-image: radial-gradient(ellipse 90% 100% at 50% 50%, rgba(216,170,61,0.12) 0%, transparent 65%);
+  padding: 100px 48px; width: 100%; position: relative; overflow: hidden;
+}
+.p04::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(216,170,61,0.35) 30%, rgba(216,170,61,0.35) 70%, transparent);
+}
+.p04-wrap {
+  max-width: 1140px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.2fr 0.8fr;
+  gap: 80px; align-items: center;
+}
+
+/* ── LEFT ── */
+.p04-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: #D8AA3D;
+  display: flex; align-items: center; gap: 8px; margin-bottom: 24px;
+}
+.p04-label::before { content: ''; width: 20px; height: 1px; background: #D8AA3D; }
+
+.p04-h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 800; line-height: 1.05em;
+  letter-spacing: -1.5px; text-transform: uppercase;
+  color: #FFFFFF; margin: 0 0 36px;
+}
+.p04-h2 span {
+  background: linear-gradient(135deg, #FBF2AB 0%, #FFCC5A 50%, #D8AA3D 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+.p04-body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px; font-weight: 400;
+  line-height: 1.85em; color: #FFFFFF;
+  margin: 0 0 20px;
+}
+.p04-body:last-child { margin: 0; }
+.p04-body strong {
+  font-weight: 800;
+  background: linear-gradient(135deg, #FBF2AB 0%, #FFCC5A 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* ── RIGHT — COUNTDOWN ── */
+.p04-counter {
+  border: 1px solid rgba(216,170,61,0.20);
+  border-top: 2px solid;
+  border-image: linear-gradient(90deg, #B88723, #FFCC5A, #B88723) 1;
+  padding: 48px 36px; text-align: center;
+  background: rgba(216,170,61,0.03);
+  position: relative;
+}
+
+/* Dias restantes */
+.p04-days-wrap {
+  margin-bottom: 32px;
+  position: relative;
+}
+.p04-days-num {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(72px, 12vw, 120px);
+  font-weight: 800; line-height: 0.85em; letter-spacing: -4px;
+  background: linear-gradient(140deg, #FBF2AB 0%, #FFCC5A 50%, #D8AA3D 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  display: block;
+}
+.p04-days-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: #FFFFFF; display: block; margin-top: 8px;
+}
+
+/* Divider */
+.p04-divider {
+  width: 40px; height: 1px;
+  background: rgba(216,170,61,0.25);
+  margin: 0 auto 28px;
+}
+
+/* Data + hora */
+.p04-event-row {
+  display: flex; align-items: center; justify-content: center; gap: 0;
+  margin-bottom: 28px;
+}
+.p04-event-item {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; gap: 6px;
+}
+.p04-event-item + .p04-event-item {
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+.p04-event-val {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(20px, 2.8vw, 28px); font-weight: 800;
+  letter-spacing: -0.5px; color: #FFFFFF;
+  line-height: 1em; display: block;
+}
+.p04-event-key {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 9px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: #FFFFFF; display: block;
+}
+
+.p04-note {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: #FFFFFF;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: block;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .p04 { padding: 72px 28px; }
+  .p04-wrap { grid-template-columns: 1fr; gap: 48px; }
+  .p04-counter { max-width: 380px; margin: 0 auto; }
+}
+@media (max-width: 480px) {
+  .p04 { padding: 56px 16px; }
+  .p04-h2 { font-size: clamp(30px, 9vw, 48px); }
+}
+</style>
+
+<div class="p04">
+  <div class="p04-wrap">
+
+    <!-- LEFT: COPY -->
+    <div>
+      <div class="p04-label">Janela única</div>
+      <h2 class="p04-h2">
+        Esse momento<br>
+        tem <span>data de validade.</span>
+      </h2>
+      <p class="p04-body">
+        Você pode estudar consistência a qualquer momento. Mas o que a <strong>IMERSÃO 47 DIAS</strong> entrega é diferente: Pako vai ensinar um método que está funcionando <strong>AGORA.</strong> A memória do processo está fresca, os detalhes que normalmente se perdem com o tempo ainda estão intactos.
+      </p>
+      <p class="p04-body">
+        <strong>ESSA IMERSÃO ACONTECE UMA ÚNICA VEZ.</strong> Não haverá reprise, não haverá segunda edição sobre esse resultado específico. Daqui a seis meses ele vai ter evoluído e esse <strong>RAIO X</strong> não vai existir mais.
+      </p>
+    </div>
+
+    <!-- RIGHT: COUNTDOWN -->
+    <div>
+      <div class="p04-counter">
+
+        <div class="p04-days-wrap">
+          <span class="p04-days-num" id="p04-days">--</span>
+          <span class="p04-days-label">dias para o evento</span>
+        </div>
+
+        <div class="p04-divider"></div>
+
+        <div class="p04-event-row">
+          <div class="p04-event-item">
+            <span class="p04-event-val">30 MAI</span>
+            <span class="p04-event-key">Data</span>
+          </div>
+          <div class="p04-event-item">
+            <span class="p04-event-val">09:00H</span>
+            <span class="p04-event-key">Horário</span>
+          </div>
+        </div>
+
+        <span class="p04-note">Uma única edição · Vagas limitadas</span>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function() {
+  var event = new Date('2026-05-30T09:00:00');
+  var now   = new Date();
+  var diff  = event - now;
+  var days  = diff > 0 ? Math.ceil(diff / (1000 * 60 * 60 * 24)) : 0;
+  var el    = document.getElementById('p04-days');
+  if (el) el.textContent = days;
+})();
+</script>

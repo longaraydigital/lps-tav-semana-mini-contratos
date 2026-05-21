@@ -1,0 +1,205 @@
+<!-- ══ BLOCO 06 — EXPERT ══
+   Imersão 47 Dias | Trade ao Vivo
+══════════════════════════════════ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+.p06 { background: transparent; padding: 100px 48px; width: 100%; }
+.p06-wrap { max-width: 1140px; margin: 0 auto; }
+
+/* ── HEADLINE ── */
+.p06-h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(40px, 6vw, 80px);
+  font-weight: 800; line-height: 1.0em;
+  letter-spacing: -2px; text-transform: uppercase;
+  color: #FFFFFF; margin: 0 0 72px;
+}
+.p06-h2 span {
+  background: linear-gradient(135deg, #FBF2AB 0%, #FFCC5A 50%, #D8AA3D 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* ── BIO GRID ── */
+.p06-bio {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 80px;
+  align-items: start;
+  margin-bottom: 80px;
+}
+
+/* ── IMAGEM ── */
+.p06-img-col { position: relative; }
+
+.p06-img-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.p06-img-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #B88723, #FFCC5A, #B88723);
+  z-index: 2;
+}
+.p06-img-wrap::after { display: none; }
+.p06-img {
+  width: 100%; height: auto;
+  display: block; object-fit: cover;
+}
+
+
+/* Badge sobre imagem */
+.p06-img-badge { display: none; }
+
+/* Linha decorativa lateral */
+.p06-img-col::before {
+  content: '';
+  position: absolute;
+  top: 2px; right: -40px; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom,
+    rgba(216,170,61,0.30) 0%,
+    rgba(216,170,61,0.08) 70%,
+    transparent 100%
+  );
+}
+
+/* ── COPY ── */
+.p06-copy {
+  padding: 40px 44px;
+  background: rgba(0,14,18,0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-left: 2px solid rgba(216,170,61,0.35);
+}
+
+.p06-name { display: none; }
+.p06-role { display: none; }
+.p06-divider { display: none; }
+
+.p06-body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px; font-weight: 400;
+  line-height: 1.90em; color: #FFFFFF;
+  margin: 0 0 22px;
+}
+.p06-body:last-child { margin: 0; }
+.p06-body strong {
+  font-weight: 800;
+  background: linear-gradient(135deg, #FBF2AB 0%, #FFCC5A 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* ── STATS ── */
+.p06-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.06);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.p06-stat {
+  background: rgba(0,14,18,0.60);
+  padding: 40px 24px;
+  text-align: center;
+  position: relative;
+  backdrop-filter: blur(4px);
+}
+.p06-stat::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(216,170,61,0.25), transparent);
+}
+.p06-stat-num {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 800; line-height: 0.9em; letter-spacing: -2px;
+  background: linear-gradient(140deg, #FBF2AB, #FFCC5A, #D8AA3D);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  display: block; margin-bottom: 12px;
+}
+.p06-stat-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: #FFFFFF; display: block;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .p06 { padding: 72px 28px; }
+  .p06-bio { grid-template-columns: 1fr; gap: 48px; }
+  .p06-img-col::before { display: none; }
+  .p06-img-col { max-width: 420px; }
+  .p06-h2 { margin-bottom: 48px; font-size: clamp(34px, 9vw, 60px); }
+  .p06-stats { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .p06 { padding: 56px 16px; }
+  .p06-name { font-size: clamp(44px, 14vw, 64px); }
+  .p06-stat { padding: 28px 16px; }
+}
+</style>
+
+<div class="p06">
+  <div class="p06-wrap">
+
+    <h2 class="p06-h2">
+      Ele não parou de operar<br>
+      para <span>ensinar.</span>
+    </h2>
+
+    <div class="p06-bio">
+
+      <!-- IMAGEM -->
+      <div class="p06-img-col">
+        <div class="p06-img-wrap">
+          <img
+            class="p06-img"
+            src="https://tradeaovivo.com.br/wp-content/uploads/2026/04/component_1.webp"
+            alt="Pako Moore — Trader"
+            loading="lazy"
+          />
+          <div class="p06-img-badge">
+            <span class="p06-img-name">Pako Moore</span>
+            <span class="p06-img-role">Trader · Os 47 dias da Infomoney</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- COPY -->
+      <div class="p06-copy">
+        <p class="p06-body">Pako Moore é o trader por trás dos <strong>47 DIAS</strong> noticiados pela Infomoney. Ele opera ao vivo todos os dias. Os <strong>47 DIAS SEM LOSS</strong> não aconteceram em condições especiais.</p>
+        <p class="p06-body">Aconteceram no mercado real, com os mesmos ruídos, as mesmas armadilhas e a mesma pressão que qualquer trader enfrenta. <strong>A DIFERENÇA FOI O MÉTODO.</strong></p>
+        <p class="p06-body">Na <strong>IMERSÃO 47 DIAS</strong>, você não vai aprender com quem teve resultados no passado. Vai aprender com quem está construindo consistência agora. <strong>ENQUANTO O RESULTADO AINDA ESTÁ ACONTECENDO.</strong></p>
+      </div>
+
+    </div>
+
+    <!-- STATS -->
+    <div class="p06-stats">
+      <div class="p06-stat">
+        <span class="p06-stat-num">47</span>
+        <span class="p06-stat-label">Dias sem loss</span>
+      </div>
+      <div class="p06-stat">
+        <span class="p06-stat-num">10+</span>
+        <span class="p06-stat-label">Anos operando</span>
+      </div>
+      <div class="p06-stat">
+        <span class="p06-stat-num">6H</span>
+        <span class="p06-stat-label">De imersão ao vivo</span>
+      </div>
+      <div class="p06-stat">
+        <span class="p06-stat-num">1X</span>
+        <span class="p06-stat-label">Edição única</span>
+      </div>
+    </div>
+
+  </div>
+</div>

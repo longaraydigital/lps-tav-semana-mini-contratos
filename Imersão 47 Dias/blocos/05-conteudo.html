@@ -1,0 +1,344 @@
+<!-- ══ BLOCO 05 — GRADE DA IMERSÃO (timeline) ══
+   Imersão 47 Dias | Trade ao Vivo
+════════════════════════════════════════════ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+.p05 {
+  background: transparent;
+  padding: 100px 48px;
+  width: 100%;
+}
+.p05-wrap { max-width: 1100px; margin: 0 auto; }
+
+/* ── HEADER ── */
+.p05-h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(43px, 6.6vw, 86px);
+  font-weight: 800; line-height: 1.0em;
+  letter-spacing: -2px; text-transform: uppercase;
+  color: #FFFFFF; margin: 0 0 24px;
+}
+.p05-h2 span {
+  background: linear-gradient(135deg, #FBF2AB 0%, #FFCC5A 50%, #D8AA3D 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.p05-subtitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 18px; font-weight: 400; line-height: 1.8em;
+  color: rgba(255,255,255,0.65); max-width: 640px; margin: 0 0 88px;
+}
+
+/* ── TIMELINE ── */
+.p05-timeline {
+  position: relative;
+}
+
+/* Linha central */
+.p05-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%; top: 0; bottom: 0;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    rgba(216,170,61,0.25) 8%,
+    rgba(216,170,61,0.25) 92%,
+    transparent 100%
+  );
+}
+
+/* ── ITEM ── */
+.p05-item {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  align-items: center;
+  min-height: 140px;
+  position: relative;
+}
+
+/* Dot central */
+.p05-dot-wrap {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  z-index: 2;
+}
+.p05-dot {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: #000E12;
+  border: 2px solid rgba(216,170,61,0.30);
+  transition: all 0.5s ease;
+  position: relative;
+}
+.p05-dot::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,204,90,0) 0%, transparent 100%);
+  transition: all 0.5s ease;
+}
+.p05-num-center {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: 1px;
+  color: rgba(216,170,61,0.30);
+  transition: color 0.4s ease;
+}
+
+/* Card */
+.p05-card {
+  padding: 32px 36px;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.02);
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.4s ease, background 0.4s ease;
+}
+
+/* Left card */
+.p05-item--left .p05-card {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: end;
+  transform: translateX(-24px);
+  max-width: 460px;
+  width: 100%;
+  border-right: none;
+}
+/* Right card */
+.p05-item--right .p05-card {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: start;
+  transform: translateX(24px);
+  max-width: 460px;
+  width: 100%;
+  border-left: none;
+}
+/* Empty side */
+.p05-item--left  .p05-empty { grid-column: 3; grid-row: 1; }
+.p05-item--right .p05-empty { grid-column: 1; grid-row: 1; }
+
+/* Connector line card → dot */
+.p05-item--left  .p05-card::after {
+  content: '';
+  position: absolute;
+  right: -1px; top: 50%;
+  width: 40px; height: 1px;
+  background: rgba(216,170,61,0.20);
+  transform: translateY(-50%);
+  transition: background 0.4s ease;
+}
+.p05-item--right .p05-card::after {
+  content: '';
+  position: absolute;
+  left: -1px; top: 50%;
+  width: 40px; height: 1px;
+  background: rgba(216,170,61,0.20);
+  transform: translateY(-50%);
+  transition: background 0.4s ease;
+}
+
+/* ── ACTIVE STATE ── */
+.p05-item.active .p05-card {
+  opacity: 1;
+  transform: translateX(0);
+  border-color: rgba(216,170,61,0.22);
+  background: rgba(216,170,61,0.03);
+}
+.p05-item.active .p05-dot {
+  background: #FFCC5A;
+  border-color: #FFCC5A;
+  box-shadow: 0 0 0 4px rgba(255,204,90,0.12), 0 0 24px rgba(255,204,90,0.40);
+}
+.p05-item.active .p05-dot::after {
+  background: radial-gradient(circle, rgba(255,204,90,0.15) 0%, transparent 70%);
+}
+.p05-item.active .p05-num-center { color: rgba(255,204,90,0.70); }
+.p05-item.active .p05-card::after { background: rgba(216,170,61,0.40); }
+
+/* ── CARD CONTENT ── */
+.p05-card-num {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  color: rgba(216,170,61,0.60);
+  display: block; margin-bottom: 10px;
+}
+.p05-card-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 18px; font-weight: 700;
+  letter-spacing: 0.3px; text-transform: uppercase;
+  color: #FFFFFF; margin-bottom: 12px; line-height: 1.3em;
+}
+.p05-card-desc {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px; font-weight: 400;
+  line-height: 1.80em; color: rgba(255,255,255,0.60); margin: 0;
+}
+
+/* ── Q&A ── */
+.p05-qa {
+  display: flex; align-items: flex-start; gap: 20px;
+  padding: 32px 40px;
+  border: 1px solid rgba(216,170,61,0.18);
+  border-top: 2px solid rgba(216,170,61,0.40);
+  background: rgba(216,170,61,0.03);
+  margin-top: 48px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.p05-qa.active { opacity: 1; transform: translateY(0); }
+.p05-qa-icon { font-size: 26px; flex-shrink: 0; margin-top: 2px; }
+.p05-qa-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 17px; font-weight: 400;
+  line-height: 1.80em; color: rgba(255,255,255,0.75);
+}
+.p05-qa-text strong { font-weight: 700; color: #FFFFFF; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  .p05 { padding: 72px 28px; }
+  .p05-timeline::before { left: 20px; }
+  .p05-item {
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: auto;
+    min-height: auto;
+    padding: 16px 0;
+    align-items: flex-start;
+  }
+  .p05-dot-wrap { grid-column: 1; grid-row: 1; padding-top: 4px; }
+  .p05-item--left  .p05-card,
+  .p05-item--right .p05-card {
+    grid-column: 2; grid-row: 1;
+    justify-self: stretch;
+    max-width: 100%;
+    border: 1px solid rgba(255,255,255,0.07);
+    transform: translateX(16px);
+  }
+  .p05-item--left  .p05-empty,
+  .p05-item--right .p05-empty { display: none; }
+  .p05-item--left  .p05-card::after,
+  .p05-item--right .p05-card::after { display: none; }
+  .p05-qa { padding: 24px 20px; }
+}
+@media (max-width: 480px) {
+  .p05 { padding: 56px 16px; }
+  .p05-h2 { font-size: clamp(30px, 10vw, 48px); letter-spacing: -1px; }
+  .p05-card { padding: 24px 20px; }
+}
+</style>
+
+<div class="p05">
+  <div class="p05-wrap">
+
+    <!-- HEADER -->
+    <h2 class="p05-h2">
+      6 horas. O método<br>
+      <span>completo. Do zero ao raio X.</span>
+    </h2>
+    <p class="p05-subtitle">Não é palestra motivacional. Não é introdução de análise técnica. É o raio X completo de um resultado real — método, rotina, gestão de risco, mentalidade e os bastidores que nunca foram mostrados antes.</p>
+
+    <!-- TIMELINE -->
+    <div class="p05-timeline">
+
+      <div class="p05-item p05-item--left">
+        <div class="p05-card">
+          <span class="p05-card-num">01</span>
+          <div class="p05-card-title">A Virada que Antecede a Consistência</div>
+          <p class="p05-card-desc">O que mudou no método e no mindset antes dos 47 dias começarem. O ponto de inflexão que separa o trader que oscila do trader que estabiliza.</p>
+        </div>
+        <div class="p05-dot-wrap">
+          <div class="p05-dot"></div>
+          <span class="p05-num-center">01</span>
+        </div>
+        <div class="p05-empty"></div>
+      </div>
+
+      <div class="p05-item p05-item--right">
+        <div class="p05-empty"></div>
+        <div class="p05-dot-wrap">
+          <div class="p05-dot"></div>
+          <span class="p05-num-center">02</span>
+        </div>
+        <div class="p05-card">
+          <span class="p05-card-num">02</span>
+          <div class="p05-card-title">O Sistema Dia a Dia</div>
+          <p class="p05-card-desc">Como eram os dias durante os 47 dias: rotina de análise, critérios de entrada e saída, o que era ignorado e o que era priorizado. O processo que se repetiu todos os dias.</p>
+        </div>
+      </div>
+
+      <div class="p05-item p05-item--left">
+        <div class="p05-card">
+          <span class="p05-card-num">03</span>
+          <div class="p05-card-title">Gestão de Risco na Prática</div>
+          <p class="p05-card-desc">As regras que protegem o capital sem travar a operação. Como evitar que um dia difícil destrua semanas de consistência — e como tomar essa decisão em tempo real.</p>
+        </div>
+        <div class="p05-dot-wrap">
+          <div class="p05-dot"></div>
+          <span class="p05-num-center">03</span>
+        </div>
+        <div class="p05-empty"></div>
+      </div>
+
+      <div class="p05-item p05-item--right">
+        <div class="p05-empty"></div>
+        <div class="p05-dot-wrap">
+          <div class="p05-dot"></div>
+          <span class="p05-num-center">04</span>
+        </div>
+        <div class="p05-card">
+          <span class="p05-card-num">04</span>
+          <div class="p05-card-title">O Lado Mental da Consistência</div>
+          <p class="p05-card-desc">O que acontece na cabeça de um trader durante uma sequência como essa. Como lidar com pressão, dias lentos e a tentação de forçar operações que não estão no setup.</p>
+        </div>
+      </div>
+
+      <div class="p05-item p05-item--left">
+        <div class="p05-card">
+          <span class="p05-card-num">05</span>
+          <div class="p05-card-title">Como Replicar — O Plano de Ação</div>
+          <p class="p05-card-desc">A estrutura prática para aplicar o método a partir do dia seguinte à imersão. Cronograma, metas de processo (não de resultado) e pontos de checagem semana a semana.</p>
+        </div>
+        <div class="p05-dot-wrap">
+          <div class="p05-dot"></div>
+          <span class="p05-num-center">05</span>
+        </div>
+        <div class="p05-empty"></div>
+      </div>
+
+    </div>
+
+    <!-- Q&A -->
+    <div class="p05-qa">
+      <span class="p05-qa-icon">💬</span>
+      <span class="p05-qa-text"><strong>Encerramento — Q&A ao vivo:</strong> Espaço exclusivo para perguntas em tempo real sobre o método, os 47 dias e como adaptar o sistema para a sua realidade.</span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function() {
+  var items = document.querySelectorAll('.p05-item');
+  var qa    = document.querySelector('.p05-qa');
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.25, rootMargin: '0px 0px -60px 0px' });
+
+  items.forEach(function(el) { observer.observe(el); });
+  if (qa) observer.observe(qa);
+})();
+</script>

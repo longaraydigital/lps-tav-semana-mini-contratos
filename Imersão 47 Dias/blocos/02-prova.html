@@ -1,0 +1,221 @@
+<!-- ══ BLOCO 02 — PROVA / STATS ══
+   Imersão 47 Dias | Trade ao Vivo
+══════════════════════════════════ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+.p02 {
+  background-color: #000E12;
+  padding: 100px 48px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.p02::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(251,242,171,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(251,242,171,0.025) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 0%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 0%, transparent 100%);
+}
+.p02-wrap { max-width: 1140px; margin: 0 auto; position: relative; z-index: 1; }
+
+/* ── HEADLINE + BODY ── */
+.p02-top {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 80px;
+  align-items: start;
+  margin-bottom: 80px;
+}
+.p02-h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(36px, 5.5vw, 72px);
+  font-weight: 800;
+  line-height: 1.0em;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: 0;
+}
+.p02-h2 span {
+  background: linear-gradient(135deg, #FBF2AB 0%, #FFCC5A 50%, #D8AA3D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.p02-right { padding-top: 8px; }
+.p02-body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px; font-weight: 300;
+  line-height: 1.9em;
+  color: rgba(255,255,255,0.70);
+  margin: 0 0 20px;
+}
+.p02-body:last-child { margin: 0; }
+.p02-body strong { font-weight: 600; color: #FFFFFF; }
+
+/* ── SEPARADOR ── */
+.p02-sep {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(216,170,61,0.30) 0%, rgba(216,170,61,0.06) 60%, transparent 100%);
+  margin-bottom: 64px;
+}
+
+/* ── QUOTE — editorial, sem card ── */
+.p02-quote-wrap { margin-bottom: 64px; }
+
+.p02-quote-mark {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 48px; font-weight: 800;
+  color: rgba(216,170,61,0.35);
+  line-height: 1;
+  display: block;
+  margin-bottom: 16px;
+  letter-spacing: -2px;
+}
+.p02-quote {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(20px, 2.6vw, 32px);
+  font-weight: 700;
+  line-height: 1.25em;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: 0 0 40px;
+  max-width: 820px;
+}
+.p02-quote span { color: #FFCC5A; }
+
+.p02-proof-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.p02-proof-tag {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: #D8AA3D;
+  border: 1px solid rgba(216,170,61,0.30);
+  padding: 6px 12px;
+}
+.p02-proof-sep {
+  font-size: 11px;
+  color: rgba(255,255,255,0.15);
+}
+.p02-proof-source {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px; font-weight: 300;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.3px;
+}
+
+/* ── STATS — sem card, só números ── */
+.p02-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-top: 64px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.p02-stat {
+  text-align: center;
+  padding: 0 32px;
+  position: relative;
+}
+.p02-stat + .p02-stat::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 10%; height: 80%;
+  width: 1px;
+  background: rgba(255,255,255,0.07);
+}
+.p02-stat-num {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(64px, 9vw, 100px);
+  font-weight: 800;
+  line-height: 0.9em;
+  letter-spacing: -3px;
+  background: linear-gradient(140deg, #FBF2AB 0%, #FFCC5A 50%, #D8AA3D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  margin-bottom: 20px;
+}
+.p02-stat-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(255,255,255,0.90);
+  display: block;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .p02 { padding: 72px 28px; }
+  .p02-top { grid-template-columns: 1fr; gap: 36px; }
+  .p02-stats { grid-template-columns: repeat(3,1fr); }
+}
+@media (max-width: 480px) {
+  .p02 { padding: 56px 16px; }
+  .p02-h2 { font-size: clamp(32px, 10vw, 52px); letter-spacing: -1px; }
+  .p02-stats { grid-template-columns: 1fr; gap: 48px; padding-top: 48px; }
+  .p02-stat + .p02-stat::before { display: none; }
+  .p02-stat + .p02-stat { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 48px; }
+}
+</style>
+
+<div class="p02">
+  <div class="p02-wrap">
+
+    <!-- HEADLINE + BODY -->
+    <div class="p02-top">
+      <h2 class="p02-h2">
+        Esse resultado<br>
+        não é <span>promessa<br>de vendas.</span><br>
+        É notícia.
+      </h2>
+      <div class="p02-right">
+        <p class="p02-body">Em 2025, a Infomoney publicou uma matéria sobre um feito incomum no mercado brasileiro: um trader operando ao vivo, com dinheiro real, que completou <strong>47 dias consecutivos sem fechar um único dia no loss.</strong></p>
+        <p class="p02-body">Não foi em conta demo. Não foi em backtesting. Foi no mercado ao vivo, com pressão real, em dias bons e ruins. <strong>E teve um método por trás.</strong></p>
+      </div>
+    </div>
+
+    <div class="p02-sep"></div>
+
+    <!-- QUOTE -->
+    <div class="p02-quote-wrap">
+      <span class="p02-quote-mark">,,</span>
+      <p class="p02-quote">
+        47 dias consecutivos sem fechar no loss.<br>
+        <span>No mercado ao vivo. Com dinheiro real.</span>
+      </p>
+      <div class="p02-proof-meta">
+        <span class="p02-proof-tag">Resultado verificado</span>
+        <span class="p02-proof-sep">//</span>
+        <span class="p02-proof-source">Como noticiado pela Infomoney</span>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="p02-stats">
+      <div class="p02-stat">
+        <span class="p02-stat-num">47</span>
+        <span class="p02-stat-label">Dias consecutivos sem loss</span>
+      </div>
+      <div class="p02-stat">
+        <span class="p02-stat-num">6H</span>
+        <span class="p02-stat-label">De imersão ao vivo</span>
+      </div>
+      <div class="p02-stat">
+        <span class="p02-stat-num">1X</span>
+        <span class="p02-stat-label">Esse evento não se repete</span>
+      </div>
+    </div>
+
+  </div>
+</div>
