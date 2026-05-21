@@ -118,6 +118,7 @@ button, input { font-family: var(--font); }
    ═══════════════════════════════════════════════════════════ */
 .container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
 .container-sm { max-width: 720px; margin: 0 auto; padding: 0 40px; }
+.container-xl { max-width: 1380px; margin: 0 auto; padding: 0 40px; }
 
 .grad-text {
   background: var(--grad-text);
@@ -657,8 +658,8 @@ button, input { font-family: var(--font); }
    ═══════════════════════════════════════════════════════════ */
 .analysts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: var(--space-4);
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
 }
 
 .analyst-card { /* herda de .card-hoverable */ }
@@ -808,7 +809,7 @@ button, input { font-family: var(--font); }
   /* Largura: viewport - 2×padding (40px) - peek do próximo card (16px) */
   .schedule-card { flex: 0 0 calc(100vw - 56px); max-width: 340px; }
 
-  .analysts-grid { grid-template-columns: 1fr 1fr; }
+  .analysts-grid { grid-template-columns: repeat(3, 1fr); }
 
   .bonus-items { grid-template-columns: 1fr; }
   .bonus-item { border-right: none; border-bottom: 1px solid var(--border); }
@@ -835,7 +836,7 @@ button, input { font-family: var(--font); }
   .schedule-card { flex: 0 0 calc(100vw - 48px); max-width: none; }
   .schedule-carousel { padding: 6px 16px 20px; scroll-padding-left: 16px; }
 
-  .analysts-grid { grid-template-columns: 1fr; }
+  .analysts-grid { grid-template-columns: 1fr 1fr; }
 
   .cta-box { padding: var(--space-4) 20px; }
 
@@ -1097,7 +1098,7 @@ button, input { font-family: var(--font); }
      SEÇÃO 3: ANALISTAS
      ═══════════════════════════════════════════════════════ -->
 <section class="section" aria-labelledby="analysts-heading">
-  <div class="container">
+  <div class="container-xl">
 
     <h2 class="section-title reveal" id="analysts-heading">
       Aprenda com traders<br>
